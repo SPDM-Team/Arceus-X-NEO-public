@@ -1,0 +1,35 @@
+{
+	"name": "Segoe",
+	"faces": [
+		{
+			"name": "Regular",
+			"weight": 400,
+			"style": "normal",
+			"assetId": "rbxasset://fonts/SegoeUI-Regular.ttf"
+		},
+		{
+			"name": "Bold",
+			"weight": 700,
+			"style": "normal",
+			"assetId": "rbxasset://fonts/SegoeUI-Bold.ttf"
+		},
+        {
+			"name": "Light",
+			"weight": 200,
+			"style": "normal",
+			"assetId": "rbxasset://fonts/SegoeUI-Light.ttf"
+		},
+        {
+			"name": "Semilight",
+			"weight": 300,
+			"style": "normal",
+			"assetId": "rbxasset://fonts/SegoeUI-Semilight.ttf"
+		},
+        {
+			"name": "Semibold",
+			"weight": 600,
+			"style": "normal",
+			"assetId": "rbxasset://fonts/SegoeUI-Semibold.ttf"
+		}
+	]
+}
