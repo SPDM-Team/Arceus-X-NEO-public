@@ -1,0 +1,17 @@
+{
+	"name": "Consolas",
+	"faces": [
+		{
+			"name": "Regular",
+			"weight": 400,
+			"style": "normal",
+			"assetId": "rbxasset://Custom Fonts/Consolas/Consolas-Regular.ttf"
+		},
+		{
+			"name": "Bold",
+			"weight": 700,
+			"style": "normal",
+			"assetId": "rbxasset://Custom Fonts/Consolas/Consolas-Bold.ttf"
+		}
+	]
+}
