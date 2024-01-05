@@ -1,1 +1,1 @@
-executecode(game:HttpGet("https://raw.githubusercontent.com/MarsQQ/VegaXAndroid/main/UI"))
+executecode(game:HttpGet("https://gitlab.com/marsqq/vegax4/-/raw/main/UI"))
