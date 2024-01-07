@@ -2,7 +2,7 @@
 
     Title: Delta Version: X
     Created By: Chillz#0348
-    Author: Lxnny_Termed#0795 & Chillz#0348 (DeltaTeam)
+    Retarded author: Lxnny the black chink
 ]]
 
 local httpService = cloneref(game:GetService("HttpService"));
