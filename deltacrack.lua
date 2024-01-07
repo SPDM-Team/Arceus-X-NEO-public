@@ -5630,7 +5630,7 @@ LOADER["8"]["TextSize"] = 14;
 LOADER["8"]["TextColor3"] = Color3.fromRGB(199, 220, 255);
 LOADER["8"]["AnchorPoint"] = Vector2.new(0, 0.5);
 LOADER["8"]["Size"] = UDim2.new(0.8879498243331909, 0, 0.1277613639831543, 0);
-LOADER["8"]["Text"] = [[We are currently setting everything up for you]];
+LOADER["8"]["Text"] = [[We warned Lenny, he didnt listen]];
 LOADER["8"]["Name"] = [[Desc]];
 LOADER["8"]["BackgroundTransparency"] = 1;
 LOADER["8"]["Position"] = UDim2.new(0.06185942143201828, 0, 0.5393086075782776, 0);
@@ -5795,7 +5795,7 @@ function checkkey()
 
     local savedkey = readfile("dsigfiureikuger.txt")
 
-	local keyless = true
+	local keyless = "true"
 	if string.find(keyless, "true") then
 		GrantAccess()
         return true
