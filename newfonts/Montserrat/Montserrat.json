@@ -1,0 +1,17 @@
+{
+	"name": "Montserrat",
+	"faces": [
+		{
+			"name": "Regular",
+			"weight": 400,
+			"style": "normal",
+			"assetId": "rbxasset://Custom Fonts/Montserrat/Montserrat-Regular.ttf"
+		},
+		{
+			"name": "Semi Bold",
+			"weight": 600,
+			"style": "normal",
+			"assetId": "rbxasset://Custom Fonts/Montserrat/Montserrat-SemiBold.ttf"
+		}
+	]
+}
