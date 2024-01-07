@@ -1,4 +1,5 @@
-print("hi")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/VegieIsCute/stuff/main/updateChecker.lua"))();
+
 --[[
 
     Title: Delta Version: X
@@ -172,7 +173,7 @@ DELTA["7"]["TextSize"] = 14;
 DELTA["7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 DELTA["7"]["AnchorPoint"] = Vector2.new(0.5, 0);
 DELTA["7"]["Size"] = UDim2.new(0.8398135900497437, 0, 0.4, 0);
-DELTA["7"]["Text"] = [[Welcome back!]];
+DELTA["7"]["Text"] = [[Go use Arceus or Codex]];
 DELTA["7"]["Name"] = [[Title]];
 DELTA["7"]["BackgroundTransparency"] = 1;
 DELTA["7"]["Position"] = UDim2.new(0.4199067950248718, 0, 0, 0);
@@ -188,7 +189,7 @@ DELTA["8"]["TextSize"] = 14;
 DELTA["8"]["TextColor3"] = Color3.fromRGB(115, 127, 152);
 DELTA["8"]["AnchorPoint"] = Vector2.new(0.5, 1);
 DELTA["8"]["Size"] = UDim2.new(0.8980631828308105, 0, 0.35361653566360474, 0);
-DELTA["8"]["Text"] = [[Access Delta through completing the key system, doesn't take long!]];
+DELTA["8"]["Text"] = [[Delta is so stupid lol]];
 DELTA["8"]["Name"] = [[Paragraph]];
 DELTA["8"]["BackgroundTransparency"] = 1;
 DELTA["8"]["Position"] = UDim2.new(0.4490315914154053, 0, 0.85361647605896, 0);
@@ -352,7 +353,7 @@ DELTA["18"]["TextSize"] = 14;
 DELTA["18"]["TextColor3"] = Color3.fromRGB(115, 127, 152);
 DELTA["18"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
 DELTA["18"]["Size"] = UDim2.new(0.6844813227653503, 0, 0.4, 0);
-DELTA["18"]["Text"] = [[Start exploiting when you complete our key system!]];
+DELTA["18"]["Text"] = [[PORCO NERO LENNY]];
 DELTA["18"]["Name"] = [[Paragraph]];
 DELTA["18"]["BackgroundTransparency"] = 1;
 DELTA["18"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
@@ -5616,7 +5617,7 @@ LOADER["7"]["TextSize"] = 14;
 LOADER["7"]["TextColor3"] = Color3.fromRGB(203, 244, 255);
 LOADER["7"]["AnchorPoint"] = Vector2.new(0, 0.5);
 LOADER["7"]["Size"] = UDim2.new(0.6451469659805298, 0, 0.1418459564447403, 0);
-LOADER["7"]["Text"] = [[Please wait a while!]];
+LOADER["7"]["Text"] = [[Use Codex or Arceus]];
 LOADER["7"]["Name"] = [[Title]];
 LOADER["7"]["BackgroundTransparency"] = 1;
 LOADER["7"]["Position"] = UDim2.new(0.1773512363433838, 0, 0.4073548913002014, 0);
@@ -5796,7 +5797,7 @@ function checkkey()
 
     local savedkey = readfile("dsigfiureikuger.txt")
 
-	local keyless = game:HttpGet("https://raw.githubusercontent.com/lxnnydev/DeltaAndroid/main/iskeyless")
+	local keyless = true
 	if string.find(keyless, "true") then
 		GrantAccess()
         return true
@@ -5822,8 +5823,6 @@ function checkkey()
     end
 
 end
-
- GrantAccess();
 
 
 coroutine.wrap(function()
