@@ -4046,7 +4046,7 @@ do
 
 	local function checkWhitelist()
 		if getgenv then
-			return true;
+			return internalUtils:Request("https://api.codex.lol/v1/auth/authenticate", "POST") ~= false;
 		end
 		return false;
 	end
@@ -4304,7 +4304,7 @@ do
 
 			local whitelistStep = startupStep.new("Waiting for you to Whitelist...", "Whitelisted!", ui.whitelist.process):Start();
 			repeat
-				task.wait(3);
+				task.wait(5);
 			until checkWhitelist() or cloneref(game:GetService("RunService")):IsStudio();
 			whitelistStep:Complete();
 
