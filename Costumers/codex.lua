@@ -4046,7 +4046,7 @@ do
 
 	local function checkWhitelist()
 		if getgenv then
-			return internalUtils:Request("https://api.codex.lol/v1/auth/authenticate", "POST") ~= false;
+			return true;
 		end
 		return false;
 	end
