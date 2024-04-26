@@ -1,7 +1,7 @@
 local http = cloneref(game:GetService("HttpService"))
 
 local succ, result = pcall(function()
-	return http:JSONDecode(game:HttpGet("https://spdmteam.com/api/bannedusers?hwid=" .. gethwid()))
+	return game:HttpGet("https://spdmteam.com/api/bannedusers?hwid=" .. gethwid()) == "true"
 end)
 
 if succ and result then
@@ -334,4 +334,5 @@ if succ and result then
 	
 	return
 end
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FurkyYT/stuff/main/mainAndroid"))()
