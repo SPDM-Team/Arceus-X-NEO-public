@@ -49,6 +49,17 @@ if succ and result then
 		return obj
 	end
 
+	local function loadImage(robloxUrl, customUrl)
+			--if not isStudio and customUrl then
+			--	local splitted = customUrl:split("/")
+			--	local imageName = splitted[#splitted]
+
+			--	return storage.saveAssetFromUrl(storage.data.types.Gui, imageName, customUrl, true)
+			--end
+
+		return robloxUrl
+	end
+
 	-- Properties:
 
 	BanCheck.BanCheck.Name = randString()
