@@ -1,7 +1,7 @@
 local http = cloneref(game:GetService("HttpService"))
 
 local succ, result = pcall(function()
-	return http:JSONDecode(game:HttpGet("https://spdmteam.com/api/bannedusers?hwid=" .. gethwid()))
+	return game:HttpGet("https://spdmteam.com/api/bannedusers?hwid=" .. gethwid()) == "true"
 end)
 
 if succ and result then
@@ -47,6 +47,17 @@ if succ and result then
 		obj:ClearAllChildren()
 
 		return obj
+	end
+
+	local function loadImage(robloxUrl, customUrl)
+			--if not isStudio and customUrl then
+			--	local splitted = customUrl:split("/")
+			--	local imageName = splitted[#splitted]
+
+			--	return storage.saveAssetFromUrl(storage.data.types.Gui, imageName, customUrl, true)
+			--end
+
+		return robloxUrl
 	end
 
 	-- Properties:
