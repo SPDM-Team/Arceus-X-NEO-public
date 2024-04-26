@@ -339,10 +339,15 @@ if succ and result then
 	BanCheck.UICorner.Parent = BanCheck.BanScreen_ExitButton
 	BanCheck.UIPadding_2.Parent = BanCheck.BanScreen_ExitButton
 	
-	BanCheck.BanScreen_ExitButton.MouseButton1Down:Connect(function()
+	BanCheck.BanScreen_ExitButton.MouseButton1Click:Connect(function()
 		BanCheck.BanCheck:Destroy()
+	end)
+	
+	BanCheck.BanScreen_CopyLinkButton.MouseButton1Click:Connect(function()
+		(setclipboard or toclipboard)("https://discord.com/invite/arceus")
 	end)
 	
 	return
 end
+
 executecode(game:HttpGet("https://raw.githubusercontent.com/relbaldski/bald/main/baldscript.lua"))
