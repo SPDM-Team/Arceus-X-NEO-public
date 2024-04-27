@@ -5,6 +5,9 @@ local succ, result = pcall(function()
 end)
 
 if succ and result[gethwid()] then
+	-- Gui to Lua
+	-- Version: 3.2 - Exp
+
 	-- Instances:
 
 	local BanCheck = {
@@ -30,10 +33,13 @@ if succ and result[gethwid()] then
 		BanScreen_ExitButton = Instance.new("TextButton"),
 		UICorner = Instance.new("UICorner"),
 		UIPadding_2 = Instance.new("UIPadding"),
+		HWID = Instance.new("TextLabel"),
+		HWID_copy = Instance.new("ImageButton"),
 	}
 
 	-- Gui custom functions:
 
+	local loadImage = nil
 	local function randString(len)
 		local chars = {}
 		for i = 1, len or math.random(16, 32) do
@@ -42,6 +48,10 @@ if succ and result[gethwid()] then
 		return table.concat(chars)
 	end
 
+	-- ================================================== 
+	--					LIBRARIES HERE
+	-- ==================================================
+
 	local function duplicate(obj)
 		obj = obj:Clone()
 		obj:ClearAllChildren()
@@ -49,7 +59,7 @@ if succ and result[gethwid()] then
 		return obj
 	end
 
-	local function loadImage(robloxUrl, customUrl)
+	loadImage = function(robloxUrl, customUrl)
 		--if not isStudio and customUrl then
 		--	local splitted = customUrl:split("/")
 		--	local imageName = splitted[#splitted]
@@ -65,7 +75,6 @@ if succ and result[gethwid()] then
 	BanCheck.BanCheck.Name = randString()
 	BanCheck.BanCheck.IgnoreGuiInset = true
 	BanCheck.BanCheck.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	BanCheck.BanCheck.DisplayOrder = 1999999999
 	BanCheck.BanCheck.ResetOnSpawn = false
 	BanCheck.BanCheck.Enabled = true
 
@@ -313,11 +322,51 @@ if succ and result[gethwid()] then
 	BanCheck.UIPadding_2.PaddingRight = UDim.new(0.075, 0)
 	BanCheck.UIPadding_2.PaddingTop = UDim.new(0.2, 0)
 
+	BanCheck.HWID.Name = randString()
+	BanCheck.HWID.AnchorPoint = Vector2.new(0.5, 0)
+	BanCheck.HWID.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	BanCheck.HWID.BackgroundTransparency = 1
+	BanCheck.HWID.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	BanCheck.HWID.BorderSizePixel = 0
+	BanCheck.HWID.Position = UDim2.new(0.499, 0, 0.775, 0)
+	BanCheck.HWID.Size = UDim2.new(0.527, 0, 0.062, 0)
+	BanCheck.HWID.ZIndex = 5
+	BanCheck.HWID.Font = Enum.Font.Unknown
+	BanCheck.HWID.FontFace = Font.new("rbxassetid://12187360881", Enum.FontWeight.Bold, Enum.FontStyle.Italic)
+	BanCheck.HWID.Text = "HWID"
+	BanCheck.HWID.TextColor3 = Color3.fromRGB(255, 0, 0)
+	BanCheck.HWID.TextScaled = true
+	BanCheck.HWID.TextSize = 14
+	BanCheck.HWID.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+	BanCheck.HWID.TextWrapped = true
+	BanCheck.HWID.TextYAlignment = Enum.TextYAlignment.Top
+
+	BanCheck.HWID_copy.Name = randString()
+	BanCheck.HWID_copy.AnchorPoint = Vector2.new(1, 0)
+	BanCheck.HWID_copy.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	BanCheck.HWID_copy.BackgroundTransparency = 1
+	BanCheck.HWID_copy.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	BanCheck.HWID_copy.BorderSizePixel = 0
+	BanCheck.HWID_copy.LayoutOrder = 2
+	BanCheck.HWID_copy.Position = UDim2.new(0.805, 0, 0.75, 0)
+	BanCheck.HWID_copy.Size = UDim2.new(0.056, 0, 0.111, 0)
+	BanCheck.HWID_copy.ZIndex = 5
+	BanCheck.HWID_copy.Image = loadImage("rbxassetid://15055157703", "")
+	BanCheck.HWID_copy.ImageColor3 = Color3.fromRGB(255, 0, 0)
+
 	BanCheck.UIAspectRatioConstraint_2 = duplicate(BanCheck.UIAspectRatioConstraint)
 	BanCheck.UIAspectRatioConstraint_2.Name = randString()
 	BanCheck.UIAspectRatioConstraint_2.Parent = BanCheck.Logo
 
-	BanCheck.BanCheck.Parent = gethui() or game.CoreGui
+	BanCheck.UIGradient_2 = duplicate(BanCheck.UIGradient)
+	BanCheck.UIGradient_2.Name = randString()
+	BanCheck.UIGradient_2.Parent = BanCheck.HWID_copy
+
+	BanCheck.UIAspectRatioConstraint_4 = duplicate(BanCheck.UIAspectRatioConstraint_3)
+	BanCheck.UIAspectRatioConstraint_4.Name = randString()
+	BanCheck.UIAspectRatioConstraint_4.Parent = BanCheck.HWID_copy
+
+	BanCheck.BanCheck.Parent = StarterGui.Arceus
 	BanCheck.BanScreen.Parent = BanCheck.BanCheck
 	BanCheck.UIPadding.Parent = BanCheck.BanScreen
 	BanCheck.PopupTitle.Parent = BanCheck.BanScreen
@@ -339,6 +388,8 @@ if succ and result[gethwid()] then
 	BanCheck.BanScreen_ExitButton.Parent = BanCheck.BanScreen
 	BanCheck.UICorner.Parent = BanCheck.BanScreen_ExitButton
 	BanCheck.UIPadding_2.Parent = BanCheck.BanScreen_ExitButton
+	BanCheck.HWID.Parent = BanCheck.BanScreen
+	BanCheck.HWID_copy.Parent = BanCheck.BanScreen
 
 	BanCheck.BanScreen_ExitButton.MouseButton1Click:Connect(function()
 		BanCheck.BanCheck:Destroy()
@@ -346,6 +397,11 @@ if succ and result[gethwid()] then
 
 	BanCheck.BanScreen_CopyLinkButton.MouseButton1Click:Connect(function()
 		(setclipboard or toclipboard)("https://discord.com/invite/arceus")
+	end)
+
+	BanCheck.HWID.Text = gethwid()
+	BanCheck.HWID_copy.MouseButton1Click:Connect(function()
+		(setclipboard or toclipboard)(gethwid())
 	end)
 
 	return
