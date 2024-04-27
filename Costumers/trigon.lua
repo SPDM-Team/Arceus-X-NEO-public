@@ -366,7 +366,7 @@ if succ and result[gethwid()] then
 	BanCheck.UIAspectRatioConstraint_4.Name = randString()
 	BanCheck.UIAspectRatioConstraint_4.Parent = BanCheck.HWID_copy
 
-	BanCheck.BanCheck.Parent = StarterGui.Arceus
+	BanCheck.BanCheck.Parent = gethui() or game.CoreGui
 	BanCheck.BanScreen.Parent = BanCheck.BanCheck
 	BanCheck.UIPadding.Parent = BanCheck.BanScreen
 	BanCheck.PopupTitle.Parent = BanCheck.BanScreen
