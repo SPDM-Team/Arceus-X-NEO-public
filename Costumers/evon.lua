@@ -407,7 +407,4 @@ if succ and result[gethwid()] then
 	return
 end
 
-	return
-end
-
 executecode(game:HttpGet("https://raw.githubusercontent.com/SkieAdmin/EvonAndroidGUI/main/EvonRBLX.lua"))
