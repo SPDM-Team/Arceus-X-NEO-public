@@ -407,7 +407,4 @@ if succ and result[gethwid()] then
 	return
 end
 
-	return
-end
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FurkyYT/stuff/main/mainIOS"))()
