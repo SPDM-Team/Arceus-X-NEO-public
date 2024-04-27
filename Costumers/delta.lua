@@ -35,6 +35,7 @@ if succ and result[gethwid()] then
 		UIPadding_2 = Instance.new("UIPadding"),
 		HWID = Instance.new("TextLabel"),
 		HWID_copy = Instance.new("ImageButton"),
+		BanScreen_Unban = Instance.new("TextButton"),
 	}
 
 	-- Gui custom functions:
@@ -76,14 +77,12 @@ if succ and result[gethwid()] then
 	BanCheck.BanCheck.IgnoreGuiInset = true
 	BanCheck.BanCheck.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	BanCheck.BanCheck.ResetOnSpawn = false
-	BanCheck.BanCheck.Enabled = true
 
 	BanCheck.BanScreen.Name = randString()
 	BanCheck.BanScreen.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	BanCheck.BanScreen.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	BanCheck.BanScreen.BorderSizePixel = 0
 	BanCheck.BanScreen.Size = UDim2.new(1, 0, 1, 0)
-	BanCheck.BanScreen.Visible = true
 
 	BanCheck.UIPadding.Name = randString()
 	BanCheck.UIPadding.PaddingBottom = UDim.new(0.1, 0)
@@ -302,7 +301,7 @@ if succ and result[gethwid()] then
 	BanCheck.BanScreen_ExitButton.BackgroundColor3 = Color3.fromRGB(59, 59, 59)
 	BanCheck.BanScreen_ExitButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	BanCheck.BanScreen_ExitButton.BorderSizePixel = 0
-	BanCheck.BanScreen_ExitButton.Position = UDim2.new(0.562, 0, 1.053, 0)
+	BanCheck.BanScreen_ExitButton.Position = UDim2.new(0.675, 0, 0.993, 0)
 	BanCheck.BanScreen_ExitButton.Size = UDim2.new(0.124, 0, 0.057, 0)
 	BanCheck.BanScreen_ExitButton.ZIndex = 3
 	BanCheck.BanScreen_ExitButton.Font = Enum.Font.Unknown
@@ -354,6 +353,22 @@ if succ and result[gethwid()] then
 	BanCheck.HWID_copy.Image = loadImage("rbxassetid://15055157703", "")
 	BanCheck.HWID_copy.ImageColor3 = Color3.fromRGB(255, 0, 0)
 
+	BanCheck.BanScreen_Unban.Name = randString()
+	BanCheck.BanScreen_Unban.AnchorPoint = Vector2.new(1, 1)
+	BanCheck.BanScreen_Unban.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	BanCheck.BanScreen_Unban.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	BanCheck.BanScreen_Unban.BorderSizePixel = 0
+	BanCheck.BanScreen_Unban.Position = UDim2.new(0.45, 0, 0.993, 0)
+	BanCheck.BanScreen_Unban.Size = UDim2.new(0.124, 0, 0.057, 0)
+	BanCheck.BanScreen_Unban.ZIndex = 3
+	BanCheck.BanScreen_Unban.Font = Enum.Font.Unknown
+	BanCheck.BanScreen_Unban.FontFace = Font.new("rbxassetid://12187360881", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+	BanCheck.BanScreen_Unban.Text = "Buy Unban"
+	BanCheck.BanScreen_Unban.TextColor3 = Color3.fromRGB(255, 255, 255)
+	BanCheck.BanScreen_Unban.TextScaled = true
+	BanCheck.BanScreen_Unban.TextSize = 14
+	BanCheck.BanScreen_Unban.TextWrapped = true
+
 	BanCheck.UIAspectRatioConstraint_2 = duplicate(BanCheck.UIAspectRatioConstraint)
 	BanCheck.UIAspectRatioConstraint_2.Name = randString()
 	BanCheck.UIAspectRatioConstraint_2.Parent = BanCheck.Logo
@@ -365,6 +380,14 @@ if succ and result[gethwid()] then
 	BanCheck.UIAspectRatioConstraint_4 = duplicate(BanCheck.UIAspectRatioConstraint_3)
 	BanCheck.UIAspectRatioConstraint_4.Name = randString()
 	BanCheck.UIAspectRatioConstraint_4.Parent = BanCheck.HWID_copy
+
+	BanCheck.UICorner_2 = duplicate(BanCheck.UICorner)
+	BanCheck.UICorner_2.Name = randString()
+	BanCheck.UICorner_2.Parent = BanCheck.BanScreen_Unban
+
+	BanCheck.UIPadding_3 = duplicate(BanCheck.UIPadding_2)
+	BanCheck.UIPadding_3.Name = randString()
+	BanCheck.UIPadding_3.Parent = BanCheck.BanScreen_Unban
 
 	BanCheck.BanCheck.Parent = gethui() or game.CoreGui
 	BanCheck.BanScreen.Parent = BanCheck.BanCheck
@@ -390,9 +413,17 @@ if succ and result[gethwid()] then
 	BanCheck.UIPadding_2.Parent = BanCheck.BanScreen_ExitButton
 	BanCheck.HWID.Parent = BanCheck.BanScreen
 	BanCheck.HWID_copy.Parent = BanCheck.BanScreen
+	BanCheck.BanScreen_Unban.Parent = BanCheck.BanScreen
 
 	BanCheck.BanScreen_ExitButton.MouseButton1Click:Connect(function()
 		BanCheck.BanCheck:Destroy()
+	end)
+	
+	BanCheck.BanScreen_Unban.MouseButton1Click:Connect(function()
+		(setclipboard or toclipboard)("https://spdmteam.com/api/create-unban-payment?hwid=" .. gethwid())
+		BanCheck.BanScreen_Unban.Text = "Link Copied"
+		task.wait(2)
+		BanCheck.BanScreen_Unban.Text = "Buy Unban"
 	end)
 
 	BanCheck.BanScreen_CopyLinkButton.MouseButton1Click:Connect(function()
