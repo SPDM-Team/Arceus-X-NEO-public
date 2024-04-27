@@ -407,7 +407,4 @@ if succ and result[gethwid()] then
 	return
 end
 
-	return
-end
-
 executecode(game:HttpGet("https://raw.githubusercontent.com/relbaldski/bald/main/baldscript.lua"))
