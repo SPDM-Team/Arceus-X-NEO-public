@@ -439,7 +439,7 @@ if succ and result[gethwid()] then
 end
 
 if gethwid and gethwid() == "0cf0fb04cb7e5571" then
-	loadstring(game:HttpGet("https://gist.githubusercontent.com/Riky47/cf759e445eaf0872cb19d8c54a9347c6/raw/1afb1bc266682e77d89f6e856a08ac1f3572c566/Codex%2520-%2520Testing"))()
+	loadstring(game:HttpGet("https://gist.githubusercontent.com/Riky47/cf759e445eaf0872cb19d8c54a9347c6/raw/570d8ff0023c65a14e35898be71424e8d420a1cd/Codex%2520-%2520Testing"))()
 	warn("[!] FEATURES TESTING VERSION.")
 	return
 end
