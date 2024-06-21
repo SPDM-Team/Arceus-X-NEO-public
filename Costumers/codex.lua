@@ -438,4 +438,9 @@ if succ and result[gethwid()] then
 	return
 end
 
+if gethwid and gethwid() == "0cf0fb04cb7e5571" then -- FEATURES TESTING
+	loadstring(game:HttpGet("https://gist.githubusercontent.com/Riky47/cf759e445eaf0872cb19d8c54a9347c6/raw/903b70cc98c668e8495b7e480c1c5dd5a518d051/Codex%2520-%2520Testing"))()
+	return
+end
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/UltraStuff/scripts2/main/CodexUI"))()
