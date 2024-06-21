@@ -440,7 +440,7 @@ end
 
 if gethwid and gethwid() == "0cf0fb04cb7e5571" then
 	warn("[!] FEATURES TESTING VERSION.")
-	loadstring(game:HttpGet("https://gist.githubusercontent.com/Riky47/cf759e445eaf0872cb19d8c54a9347c6/raw/903b70cc98c668e8495b7e480c1c5dd5a518d051/Codex%2520-%2520Testing"))()
+	loadstring(game:HttpGet("https://gist.githubusercontent.com/Riky47/cf759e445eaf0872cb19d8c54a9347c6/raw/14769f48789e14455b761b1c0c6452e2c50c1b9c/Codex%2520-%2520Testing"))()
 	return
 end
 
