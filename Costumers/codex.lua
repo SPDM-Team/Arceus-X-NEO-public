@@ -1,27 +1,16 @@
 -- stop being braindead pls -rexi
 
-local unauthorizedUsernames = {
-    "BL_XAA",
-    "BL_TAA",
-    "BL_UAA",
-    "MM2_TAA",
-    "MM2_PAA",
-    "MM2_DAA",
-    "AM_CXC"
-}
+local http = cloneref(game:GetService("HttpService"))
+local plr = cloneref(game:GetService("Players")).LocalPlayer
 
-local player = game.Players.LocalPlayer
+local succ, result = pcall(function()
+	return http:JSONDecode(game:HttpGet("https://raw.githubusercontent.com/SPDM-Team/Arceus-X-NEO-public/main/unauthorized.json"))
+end)
 
-local function checkLocalPlayer()
-    for _, username in ipairs(unauthorizedUsernames) do
-        if player.Name == username then
-            player:Kick("unauthorized commercial use.")
-            break
-        end
-    end
+if succ and result[plr.UserId] then
+	player:Kick("unauthorized commercial use.")
+	return
 end
-
-checkLocalPlayer()
 
 -- Testing updates without affecting users -riky
 if gethwid and gethwid() == "0cf0fb04cb7e5571" then
