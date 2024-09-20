@@ -15,7 +15,7 @@ end
 -- Testing updates without affecting users -riky
 if gethwid and gethwid() == "0cf0fb04cb7e5571" then
 	warn("Version tester executing init file.")
-	dofile("Init.lua")
+	executecode(readfile("Init.lua"))
 	warn("[!] FEATURES TESTING VERSION.")
 	return
 end
