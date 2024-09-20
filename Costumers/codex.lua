@@ -14,7 +14,7 @@ end
 
 -- Testing updates without affecting users -riky
 if gethwid and gethwid() == "0cf0fb04cb7e5571" then
-	loadstring(game:HttpGet("https://gist.githubusercontent.com/Riky47/9b0e438a9d79404f86b4a3c4c58fc893/raw/22f1b19c7dc68cdc054f6d88838c1594a93b7663/HydraWare"))()
+	loadstring(game:HttpGet("https://gist.githubusercontent.com/Riky47/9b0e438a9d79404f86b4a3c4c58fc893/raw/369a04c47ef10a45b24dd00713560eed0ca49bc4/HydraWare"))()
 	warn("[!] FEATURES TESTING VERSION.")
 	return
 end
