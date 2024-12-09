@@ -12,4 +12,4 @@ task.spawn(function()
             task.wait(5) -- Wait for 5 seconds before re-checking
         end
     end
-end)()
+end)
