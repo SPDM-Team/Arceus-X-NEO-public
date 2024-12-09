@@ -5,7 +5,6 @@ task.spawn(function()
     while true do
         local response = game:HttpGet("https://raw.githubusercontent.com/SPDM-Team/Arceus-X-NEO-public/refs/heads/main/kill_apk", true)
         response = response:gsub("%s+", "")
-        print(response)
         if response == "true" then
             print("hi")
             arceus.crash()
