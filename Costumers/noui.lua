@@ -6,7 +6,7 @@ local status, key = pcall(function()
 end)
 
 if status then
-    local result = game:HttpGet("https://spdmteam.com/api/noui/claim?key=" + key);
+    local result = game:HttpGet("https://spdmteam.com/api/noui/claim?key=" .. key);
     local data = HTTP_SERVICE:JSONDecode(result);
     if data and data.status == "Claimed" then
         local jsonData = {
