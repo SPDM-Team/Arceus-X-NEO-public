@@ -17,6 +17,7 @@ if status then
         local base64decode = crypt.base64decode(json);
         local decrypt = crypt.decrypt(base64decode, encrypted(), encrypted(), "CBC");
         local decrypted_data = HTTP_SERVICE:JSONDecode(decrypt);
+        print(decrypted_data);
         result = game:HttpGet("https://spdmteam.com/api/noui/claim?key=" .. key .. "&hwid=" .. hwid .. "&random=" .. decrypted_data.random);
     else
         result = game:HttpGet("https://spdmteam.com/api/noui/claim?key=" .. key .. "&hwid=" .. hwid);
