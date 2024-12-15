@@ -1,4 +1,4 @@
-
+--[[
 local HTTP_SERVICE = cloneref(game:GetService("HttpService"))
 local hwid = gethwid();
 local encrypted = clonefunction(arceus.encrypted);
@@ -77,3 +77,10 @@ else
     end
 end
 arceus = nil;
+--]]
+local encrypted = clonefunction(arceus.encrypted);
+protectfunction(encrypted);
+protectfunction(arceus.encrypted);
+for _, file in ipairs(arceus.listarceusfiles("Autoexec")) do
+    executecode(arceus.readarceusfile(file))
+end
