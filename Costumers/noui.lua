@@ -58,7 +58,7 @@ if status then
     end
 else
     local result = game:HttpGet("https://spdmteam.com/api/noui/claim?hwid=" .. hwid);
-    elseif data.status == "GoodToGo" then
+    if data.status == "GoodToGo" then
             for _, file in ipairs(arceus.listarceusfiles("Autoexec")) do
                 executecode(arceus.readarceusfile(file))
             end
