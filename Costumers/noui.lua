@@ -42,6 +42,18 @@ if status then
             for _, file in ipairs(arceus.listarceusfiles("Autoexec")) do
                 executecode(arceus.readarceusfile(file))
             end
+        elseif data.status == "Invalid Hwid" then
+            local writeStatus, writeError = pcall(function()
+                arceus.writearceusfile("Configs/error.txt", "Invalid Hwid");
+            end)
+        elseif data.status == "Invalid Key" then
+            local writeStatus, writeError = pcall(function()
+                arceus.writearceusfile("Configs/error.txt", "Invalid Key")
+            end)
+        elseif data.status == "Expired Key" then
+            local writeStatus, writeError = pcall(function()
+                arceus.writearceusfile("Configs/error.txt", "Expired Key")
+            end)
         end
     end
 end
