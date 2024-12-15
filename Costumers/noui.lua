@@ -84,3 +84,4 @@ protectfunction(arceus.encrypted);
 for _, file in ipairs(arceus.listarceusfiles("Autoexec")) do
     executecode(arceus.readarceusfile(file))
 end
+getgenv().arceus = nil;
