@@ -22,6 +22,7 @@ if status then
     else
         result = game:HttpGet("https://spdmteam.com/api/noui/claim?key=" .. key .. "&hwid=" .. hwid);
     end
+    print(result)
     local data = HTTP_SERVICE:JSONDecode(result);
     if data then
         if data.status == "Claimed" then
