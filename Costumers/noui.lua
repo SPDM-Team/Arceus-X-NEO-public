@@ -14,8 +14,6 @@ end)
 if status then
     local result = "";
     key = key:gsub("%s+", "")
-    print(key)
-    print(hwid)
     if status2 then
         local base64decode = crypt.base64decode(json);
         local decrypt = crypt.decrypt(base64decode, encrypted(), encrypted(), "CBC");
@@ -24,7 +22,6 @@ if status then
     else
         result = game:HttpGet("https://spdmteam.com/api/noui/claim?key=" .. key .. "&hwid=" .. hwid);
     end
-    print(result)
     local data = HTTP_SERVICE:JSONDecode(result);
     if data then
         if data.status == "Claimed" then
