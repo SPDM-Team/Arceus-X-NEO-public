@@ -14,6 +14,8 @@ end)
 if status then
     local result = "";
     key = key:gsub("%s+", "")
+    print(key)
+    print(hwid)
     if status2 then
         local base64decode = crypt.base64decode(json);
         local decrypt = crypt.decrypt(base64decode, encrypted(), encrypted(), "CBC");
