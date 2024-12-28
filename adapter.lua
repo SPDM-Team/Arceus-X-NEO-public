@@ -25,7 +25,7 @@ do -- Arceus X Adapeter
 		getgenv().writefile = wf
 		
 		-- Arceus table
-		ax.is_ios = arceus.is_ios or function() return true end
+		ax.is_ios = arceus.is_ios or function() return uis:GetPlatform() == Enum.Platform.IOS end
 		ax.is_vng = arceus.is_vng or function() return false end
 		ax.getversion = arceus.getversion or function()
 			return select(2, identifyexecutor()) or "1.0.0"
