@@ -65,6 +65,14 @@ do -- Arceus X Adapeter
 		ax.iscustomasset = arceus.iscustomasset or buddy
 		ax.openurl = arceus.openurl or buddy
 		
+		for _, closure in pairs(arceus) do
+			protectfunction(closure)
+		end
+		
+		for _, closure in pairs(ax) do
+			protectfunction(closure)
+		end
+		
 		protectfunction(ax)
 		getgenv().arceus = ax
 	end
