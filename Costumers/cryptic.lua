@@ -1,1 +1,1 @@
-executecode(game:HttpGet("https://github.com/AyoReaper/Cryptic/blob/main/CrypticUserInterface"))
+executecode(game:HttpGet("https://raw.githubusercontent.com/AyoReaper/Cryptic/refs/heads/main/CrypticUserInterface"))
