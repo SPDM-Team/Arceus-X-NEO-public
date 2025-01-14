@@ -6,9 +6,9 @@ protectfunction(arceus.listarceusfiles);
 protectfunction(readarceusfile);
 protectfunction(arceus.readarceusfile);
 protectfunction(execod);
-
+getgenv().arceus = nil;
 for _, file in ipairs(listarceusfiles("Autoexec")) do
     execod(readarceusfile(file))
 end
 
-getgenv().arceus = nil;
+
