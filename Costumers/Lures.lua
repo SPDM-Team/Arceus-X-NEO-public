@@ -1,5 +1,3 @@
--- DO NOT DELETE THIS IS TEMPORARILY, Riky47
-
 -- Gui to Lua
 -- Version: 3.2 - Exp
 
@@ -6423,13 +6421,13 @@ do
 
 	editor.Focused:Connect(function()
 		editorFocused = true
-		stretch()
+		--stretch()
 	end)
 
 	editor.FocusLost:Connect(function()
 		Main.MainExecuteButton.Text = editor.Text == "" and "Execute clipboard" or "Execute"
 		clear.Button.Visible = editor.Text ~= ""
-		reset()
+		--reset()
 	end)
 
 	if editor.Text == "" then
