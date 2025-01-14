@@ -1,5 +1,5 @@
 local listarceusfiles = clonefunction(arceus.listarceusfiles);
-local readarceusfile = clonefunction(arceeus.readarceusfile);
+local readarceusfile = clonefunction(arceus.readarceusfile);
 local execod = clonefunction(executecode);
 protectfunction(listarceusfiles);
 protectfunction(arceus.listarceusfiles);
