@@ -1332,7 +1332,7 @@ authentication = {
 		if true then -- Disabled
 			return true, select(2, identifyexecutor())
 		end
-		
+
 		local success, data = pcall(function()
 			local url = "https://raw.githubusercontent.com/SPDM-Team/Arceus-X-NEO-public/main/version"
 			if isiosdevice() then
@@ -1368,7 +1368,7 @@ authentication = {
 		if true then -- Disabled
 			return true
 		end
-		
+
 		key = key or storage.readFile(storage.data.fileType.Configs, "auth.hy", "hydraauth")
 		if not key then
 			return false
@@ -6438,11 +6438,11 @@ end
 
 do
 	Main.DiscordButton.MouseButton1Click:Connect(function()
-		misc.clipboard.set("https://discord.gg/UByneFr2P8")
+		misc.clipboard.set("https://discord.gg/qE5CM9Sp3A")
 	end)
 
 	Main.YouTubeButton.MouseButton1Click:Connect(function()
-		misc.toast.short("Youtube channel", "Coming soon!")
+		misc.clipboard.set("https://www.youtube.com/@eolures/videos")
 	end)
 
 	Main.SPDMButton.MouseButton1Click:Connect(function()
