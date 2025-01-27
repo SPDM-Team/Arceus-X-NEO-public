@@ -4,15 +4,14 @@ local runtasks do
 	local max_yield = 1.25
 	
 	runtasks = function(...: (any) -> ())
-		local args, callbacks = {...}, {}
+		local args = {...}
 		local r = #args
 		
 		for _, func in ipairs(args) do
 			local callback = Instance.new("BindableEvent")
-			table.insert(callbacks, callback)
-			
 			callback.Event:Once(function()
 				r -= 1
+				callback:Destroy()
 			end)
 					
 			task.spawn(function()
@@ -27,9 +26,6 @@ local runtasks do
 		end
 		
 		repeat task.wait() until r == 0
-		for _, v in ipairs(callbacks) do
-			v:Destroy()
-		end
 	end
 end
 
