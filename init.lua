@@ -19,7 +19,8 @@ local runtasks do
 					task.wait(max_yield)
 					pcall(callback.Fire, callback)
 				end)
-				
+
+				print(func)
 				func()
 				pcall(callback.Fire, callback)
 			end)
