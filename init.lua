@@ -1,5 +1,38 @@
 local placeid = game.PlaceId
 
+local runtasks do
+	local max_yield = 1.25
+	
+	runtasks = function(...: (any) -> ())
+		local args, callbacks = {...}, {}
+		local r = #args
+		
+		for _, func in ipairs(args) do
+			local callback = Instance.new("BindableEvent")
+			table.insert(callbacks)
+			
+			callback.Event:Once(function()
+				r -= 1
+			end)
+					
+			task.spawn(function()
+				task.spawn(function()
+					task.wait(max_yield)
+					callback:Fire()
+				end)
+				
+				func()
+				callback:Fire()
+			end)
+		end
+		
+		repeat task.wait() until r == 0
+		for _, v in ipairs(callbacks) do
+			v:Destroy()
+		end
+	end
+end
+
 local gcinf do
 	gcinf = function()
 		repeat task.wait() until game:IsLoaded()
@@ -26,7 +59,6 @@ local gcinf do
 		end
 
 		task.wait(0.30)
-
 		local OldGcInfo = gcinfo()+Amplitude
 		local tick = 0
 
@@ -47,10 +79,9 @@ local gcinf do
 			return Old2(arg, ...);
 		end)
 
-
 		game:GetService("RunService").Stepped:Connect(function()
-			local Formula = ((acos(cos(pi * (tick)))/pi * (Amplitude * 2)) + -Amplitude )
-			if Formula > ((acos(cos(pi * (tick)+.01))/pi * (Amplitude * 2)) + -Amplitude ) then
+			local Formula = ((acos(cos(pi * (tick)))/pi * (Amplitude * 2)) + -Amplitude)
+			if Formula > ((acos(cos(pi * (tick)+.01))/pi * (Amplitude * 2)) + -Amplitude) then
 				tick = tick + .07
 			else
 				tick = tick + 0.01
@@ -291,12 +322,14 @@ local whitelist, torun = {
 	--[14708612238] = "Bazooka"
 }, {
 	[2788229376] = function()
-		task.spawn(preloadasync)
-		task.spawn(memoryv1)
-		task.spawn(memoryv2)
-		task.spawn(textbox)
-		task.spawn(gcinf)
-		task.spawn(proxy)
+		runtasks(
+			preloadasync,
+			memoryv1,
+			memoryv2,
+			textbox,
+			gcinf,
+			proxy
+		)
 	end
 }
 
