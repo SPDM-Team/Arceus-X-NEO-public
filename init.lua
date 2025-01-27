@@ -18,11 +18,11 @@ local runtasks do
 			task.spawn(function()
 				task.spawn(function()
 					task.wait(max_yield)
-					callback:Fire()
+					pcall(callback.Fire, callback)
 				end)
 				
 				func()
-				callback:Fire()
+				pcall(callback.Fire, callback)
 			end)
 		end
 		
