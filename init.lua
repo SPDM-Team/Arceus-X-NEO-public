@@ -20,7 +20,6 @@ local runtasks do
 					pcall(callback.Fire, callback)
 				end)
 
-				print(func)
 				func()
 				pcall(callback.Fire, callback)
 			end)
