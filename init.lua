@@ -1,4 +1,4 @@
-local placeid = game.PlaceId
+--[[local placeid = game.PlaceId
 
 local runtasks do
 	local max_yield = 1.25
@@ -332,3 +332,4 @@ local whitelist, torun = {
 if whitelist[placeid] then return end
 local action = torun[placeid]
 if action then action() end
+--]]
