@@ -35,7 +35,7 @@ end
 
 local gcinf do
 	gcinf = function()
-		repeat task.wait() until game:IsLoaded()
+		--repeat task.wait() until game:IsLoaded()
 
 		local Amplitude = 200
 		local RandomValue = {-200,200}
@@ -58,7 +58,7 @@ local gcinf do
 			end
 		end
 
-		task.wait(0.30)
+		--task.wait(0.30)
 		local OldGcInfo = gcinfo()+Amplitude
 		local tick = 0
 
@@ -105,7 +105,7 @@ end
 
 local memoryv1 do
 	memoryv1 = function()
-		repeat task.wait() until game:IsLoaded()
+		--repeat task.wait() until game:IsLoaded()
 
 		local RunService = cloneref(game:GetService("RunService"))
 		local Stats = cloneref(game:GetService("Stats"))
@@ -148,7 +148,7 @@ end
 
 local memoryv2 do
 	memoryv2 = function()
-		repeat task.wait() until game:IsLoaded()
+		--repeat task.wait() until game:IsLoaded()
 
 		local RunService = cloneref(game:GetService("RunService"))
 		local Stats = cloneref(game:GetService("Stats"))
@@ -321,7 +321,16 @@ local whitelist, torun = {
 	--[88066229991962] = "Mingle",
 	--[14708612238] = "Bazooka"
 }, {
-	[2788229376] = preloadasync
+	[2788229376] = function()
+		runtasks(
+			preloadasync,
+			memoryv1,
+			memoryv2,
+			textbox,
+			gcinf,
+			proxy
+		)
+	end
 }
 
 if whitelist[placeid] then return end
