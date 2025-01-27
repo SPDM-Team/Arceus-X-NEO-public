@@ -9,7 +9,7 @@ local runtasks do
 		
 		for _, func in ipairs(args) do
 			local callback = Instance.new("BindableEvent")
-			table.insert(callbacks)
+			table.insert(callbacks, callback)
 			
 			callback.Event:Once(function()
 				r -= 1
