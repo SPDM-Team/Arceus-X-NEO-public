@@ -1,3 +1,5 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SPDM-Team/Arceus-X-NEO-public/refs/heads/main/init.lua", true))()
+
 -- Testing updates without affecting users -riky
 if gethwid and gethwid() == "0cf0fb04cb7e5571" then
 	warn("Version tester executing init file.")
