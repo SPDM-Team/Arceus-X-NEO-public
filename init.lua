@@ -321,16 +321,7 @@ local whitelist, torun = {
 	--[88066229991962] = "Mingle",
 	--[14708612238] = "Bazooka"
 }, {
-	[2788229376] = function()
-		runtasks(
-			preloadasync,
-			memoryv1,
-			memoryv2,
-			textbox,
-			gcinf,
-			proxy
-		)
-	end
+	[2788229376] = preloadasync
 }
 
 if whitelist[placeid] then return end
