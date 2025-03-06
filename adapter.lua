@@ -8,11 +8,15 @@ do -- Arceus X Adapeter
 		local writefile = clonefunction(writefile)
 		protectfunction(writefile)
 		
+		local lower, match = clonefunction(string.lower), clonefunction(string.match)
+		protectfunction(lower)
+		protectfunction(match)
+		
 		local wf = function(path: string, ...)
-			local folder, lower = "autoexec", path:lower()
-			if lower:match("^" ..folder)
-				or lower:match("^/" ..folder)
-				or lower:match("^\\" ..folder)
+			local folder, lower = "autoexec", lower(path)
+			if match(lower, "^" ..folder)
+				or match(lower, "^/" ..folder)
+				or match(lower, "^\\" ..folder)
 
 			then -- returns in case error is somehow hooked
 				return error("attempt to write in the auto-execution folder")
