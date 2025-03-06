@@ -1,19 +1,38 @@
 do -- Arceus X Adapeter
 	local uis = cloneref(game:GetService("UserInputService"))
-	if (uis:GetPlatform() == Enum.Platform.IOS or not arceus) then
+	local platform = uis:GetPlatform()
+	
+	if (platform == Enum.Platform.IOS or not arceus) then
 		local arceus, ax = arceus or {}, {}
 		local function buddy() end
 		
 		-- security
+		local clonefunction = clonefunction(clonefunction)
+		local protectfunction = protectfunction or clonefunction(protectfunction) or function(...) return ... end
+		protectfunction(protectfunction)
+		protectfunction(clonefunction)
+		
 		local writefile = clonefunction(writefile)
 		protectfunction(writefile)
 		
 		local lower, match, err = clonefunction(string.lower), clonefunction(string.match), clonefunction(error)
+		local spwn, load = clonefunction(task.spawn), clonefunction(loadstring)
 		local folders = {"autoexec", "script hub", "configs"}
+		local sel = clonefunction(select)
 		protectfunction(folders)
 		protectfunction(lower)
 		protectfunction(match)
+		protectfunction(load)
+		protectfunction(spwn)
 		protectfunction(err)
+		protectfunction(sel)
+		
+		local idexec, execode = clonefunction(identifyexecutor), executecode and clonefunction(executecode) or function(content)
+			spwn(load, content)
+		end
+		
+		protectfunction(execode)
+		protectfunction(idexec)
 		
 		local wf = function(path: string, ...)
 			local low = lower(path)
@@ -34,10 +53,10 @@ do -- Arceus X Adapeter
 		getgenv().writefile = wf
 		
 		-- Arceus table
-		ax.is_ios = arceus.is_ios or function() return uis:GetPlatform() == Enum.Platform.IOS end
+		ax.is_ios = arceus.is_ios or function() return platform == Enum.Platform.IOS end
 		ax.is_vng = arceus.is_vng or function() return false end
 		ax.getversion = arceus.getversion or function()
-			return select(2, identifyexecutor()) or "1.0.0"
+			return sel(2, idexec()) or "1.0.0"
 		end
 		
 		ax.deletearceusfolder = arceus.deletearceusfolder or delfolder or buddy
@@ -55,11 +74,7 @@ do -- Arceus X Adapeter
 		ax.doarceusfile = arceus.doarceusfile or dofile or function(...)
 			if ax.isarceusfile(...) then
 				local content = ax.readarceusfile(...)
-				if executecode then
-					return executecode(content)
-				end
-				
-				task.spawn(loadstring, content)
+				return execode(content)
 			end
 		end
 		
