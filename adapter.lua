@@ -8,18 +8,23 @@ do -- Arceus X Adapeter
 		local writefile = clonefunction(writefile)
 		protectfunction(writefile)
 		
-		local lower, match = clonefunction(string.lower), clonefunction(string.match)
+		local lower, match, err = clonefunction(string.lower), clonefunction(string.match), clonefunction(error)
+		local folders = {"autoexec", "script hub", "configs"}
+		protectfunction(folders)
 		protectfunction(lower)
 		protectfunction(match)
+		protectfunction(err)
 		
 		local wf = function(path: string, ...)
-			local folder, lower = "autoexec", lower(path)
-			if match(lower, "^" ..folder)
-				or match(lower, "^/" ..folder)
-				or match(lower, "^\\" ..folder)
+			local low = lower(path)
+			for _, folder in folders do
+				if match(low, "^" ..folder)
+					or match(low, "^/" ..folder)
+					or match(low, "^\\" ..folder)
 
-			then -- returns in case error is somehow hooked
-				return error("attempt to write in the auto-execution folder")
+				then -- returns in case error is somehow hooked
+					return err("Attempt to write in a restricted folder")
+				end
 			end
 
 			writefile(path, ...)
