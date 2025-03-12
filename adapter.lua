@@ -1,16 +1,17 @@
 do -- Arceus X Adapeter
 	local uis = cloneref(game:GetService("UserInputService"))
 	local platform = uis:GetPlatform()
+	local arceus = arceus or {}
 	
-	if (platform == Enum.Platform.IOS or not arceus) then
-		local arceus, ax = arceus or {}, {}
-		local function buddy() end
+	-- security
+	local clonefunction = clonefunction(clonefunction)
+	local protectfunction = protectfunction or clonefunction(protectfunction) or function(...) return ... end
+	protectfunction(protectfunction)
+	protectfunction(clonefunction)
 		
-		-- security
-		local clonefunction = clonefunction(clonefunction)
-		local protectfunction = protectfunction or clonefunction(protectfunction) or function(...) return ... end
-		protectfunction(protectfunction)
-		protectfunction(clonefunction)
+	if (platform == Enum.Platform.IOS or not arceus) then
+		local function buddy() end
+		local ax = {}
 		
 		local writefile = clonefunction(writefile)
 		protectfunction(writefile)
@@ -89,15 +90,16 @@ do -- Arceus X Adapeter
 		ax.iscustomasset = arceus.iscustomasset or buddy
 		ax.openurl = arceus.openurl or buddy
 		
-		for _, closure in pairs(arceus) do
-			protectfunction(closure)
-		end
-		
 		for _, closure in pairs(ax) do
 			protectfunction(closure)
 		end
 		
 		protectfunction(ax)
 		getgenv().arceus = ax
+	end
+	
+	protectfunction(arceus)
+	for _, closure in pairs(arceus) do
+		protectfunction(closure)
 	end
 end
