@@ -1,5 +1,8 @@
 if gethwid() == "02b4b02b35dd9cc4" then -- For testing
-	getgenv().ax = getgenv().arceus
+	task.spawn(function()
+		repeat task.wait() until arceus
+		getgenv().ax = arceus
+	end)
 end
 
 --[[local placeid = game.PlaceId
