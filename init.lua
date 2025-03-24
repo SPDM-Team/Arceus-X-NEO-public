@@ -1,8 +1,10 @@
 if gethwid() == "02b4b02b35dd9cc4" then -- For testing
-	task.spawn(function()
-		repeat task.wait() until arceus
-		getgenv().ax = arceus
-	end)
+	repeat task.wait() until arceus
+	getgenv().ax = arceus
+
+	if isfile("Init.lua") then
+		return executecode(readfile("Init.lua"))
+	end
 end
 
 --[[local placeid = game.PlaceId
