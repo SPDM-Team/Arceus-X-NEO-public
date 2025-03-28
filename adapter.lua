@@ -12,6 +12,7 @@ do -- Arceus X Adapeter
 		local arceus, ax = arceus or {}, {}
 		local function buddy() end
 		
+		protectfunction(writefile) -- protects the og one
 		local writefile = clonefunction(writefile)
 		protectfunction(writefile)
 		
