@@ -3,7 +3,8 @@ if gethwid() == "02b4b02b35dd9cc4" then -- For testing
 	getgenv().ax = arceus
 
 	if isfile("Init.lua") then
-		return executecode(readfile("Init.lua"))
+		executecode(readfile("Init.lua"))
+		return error("Testing mode") -- stops the original code
 	end
 end
 
