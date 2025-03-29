@@ -1,4 +1,5 @@
 if gethwid() == "02b4b02b35dd9cc4" then -- For testing
+	warn("Testing mode")
 	repeat task.wait() until arceus
 	getgenv().ax = arceus
 
