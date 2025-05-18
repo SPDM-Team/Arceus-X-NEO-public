@@ -9,7 +9,8 @@ local whitelist = {
     "02b4b02b35dd9cc4",
 	
     "397A62E6-297F-4706-88AA-7C00CA31FB6B", -- iOS
-    "2574FBB5-C46B-4CC6-AF83-86185A05F63D"
+    "2574FBB5-C46B-4CC6-AF83-86185A05F63D",
+    "D92E826F-0C14-44C3-BB3C-82A499D97032"
 }
 
 if gethwid and table.find(whitelist, gethwid()) then
