@@ -15,7 +15,7 @@ local whitelist = {
 
 if gethwid and table.find(whitelist, gethwid()) then
 	warn("[!] THIS IS A BETA TESTING VERSION OF CODEX")
-	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/cca78edee7ce2eeda7de3b35ce019e16d86b9d9f/Codex-Beta.lua"))
+	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/840e79ca98d4342d0dc1f95e7d34e999e7687bbb/Codex-Beta.lua"))
 end
 
 executecode(game:HttpGet("https://raw.githubusercontent.com/UltraStuff/scripts2/main/CodexUI"))
