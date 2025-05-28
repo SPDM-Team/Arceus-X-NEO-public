@@ -1,5 +1,4 @@
-local hwid = gethwid()
-if hwid == "02b4b02b35dd9cc4" or hwid == "138c63ee97d90abb" then -- For testing
+if table.find({"02b4b02b35dd9cc4", "138c63ee97d90abb", "53ba432a372d4bf7"}, gethwid()) then -- For testing
 	warn("Testing mode")
 	repeat task.wait() until arceus
 	getgenv().ax = arceus
