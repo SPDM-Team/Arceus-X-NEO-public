@@ -10,6 +10,7 @@
 
 loadstring(game:HttpGet(`https://raw.githubusercontent.com/SPDM-Team/Arceus-X-NEO-public/refs/heads/main/init.lua`))()
 local framework = loadstring(game:HttpGet("https://raw.githubusercontent.com/Riky47/Xploit-Framework/refs/heads/main/index.lua"))()
+--local framework = require("../Wave/WaveFramework")
 
 local ARCEUS_FOLDERS = {
 	CONFIGS = framework.storage:CreateDirectory("configs", "Configs"),
@@ -48,7 +49,7 @@ local WAVE_CONFIGS = {
 	SETTINGS = {
 		ConfirmationPopups = true,
 		ToastPopups = true,
-		
+
 		ScriptBlox = {
 			verified = false,
 			paid = false,
@@ -138,7 +139,7 @@ do -- exploit
 			obj1, obj2 = ui:Get("MaximizeBtn").instance, ui:Get("CloseBtn").instance
 			obj1.Position = UDim2.new(obj2.Position.X.Scale -.015, -obj2.AbsoluteSize.Y, .5, 0) 
 			obj1:FindFirstChildWhichIsA("ImageLabel").Image = maximised and framework.protected:ProtectAsset("rbxassetid://117184723968695") or framework.protected:ProtectAsset("rbxassetid://95901214470479")
-			
+
 			obj1, obj2 = ui:Get("CloudBtn").instance, ui:Get("ExecutorBtn").instance
 			obj1.Position = UDim2.new(.515, 0, obj2.Position.Y.Scale +.01, obj2.AbsoluteSize.Y)
 
@@ -164,12 +165,12 @@ do -- exploit
 				Text = text
 			})
 		end)
-		
+
 		popups.Toast = framework.protected:GCProtect(function(text: string)
 			if not framework.settings:GetSetting("ToastPopups") then
 				return
 			end
-			
+
 			ui:AddComponent("ToastPopup", {
 				Text = text
 			})
@@ -354,7 +355,7 @@ do -- exploit
 
 				})), ui:AddInstance("TextLabel", {
 					Id = props.TextId,
-					
+
 					TextYAlignment = Enum.TextYAlignment.Bottom,
 					TextXAlignment = Enum.TextXAlignment.Left,
 					TextColor3 = Color3.fromRGB(139, 139, 139),
@@ -372,7 +373,7 @@ do -- exploit
 		do -- Popup
 			local popup, area, btn, callback = nil, nil, nil, framework.signals.newEvent()
 			local tween = tweeninfo()
-			
+
 			local mainState = 0
 			local open = framework.protected:GCProtect(function()
 				area.instance.Position = area.closedPosition
@@ -508,10 +509,10 @@ do -- exploit
 				return popup
 			end))
 		end
-		
+
 		do -- Toast
 			local toastList, order = nil, 999999
-			
+
 			local comp = ui:CreateComponent("ToastPopup")
 			comp.OnCreating:Connect(framework.protected:GCProtect(function(props: {any})
 				if not toastList then
@@ -520,21 +521,21 @@ do -- exploit
 						Size = UDim2.fromScale(1, 1),
 						BackgroundTransparency = 1,
 						ZIndex = 0
-						
+
 					}, ui:AddInstance("UIListLayout", {
 						HorizontalAlignment = Enum.HorizontalAlignment.Center,
 						SortOrder = Enum.SortOrder.LayoutOrder,
 						Padding = UDim.new(0, border *2),
-						
+
 					}))
-					
+
 					ui:AddInstance("CanvasGroup", {
 						Position = UDim2.fromScale(.5, 0),
 						AnchorPoint = Vector2.new(.5, 0),
 						Size = UDim2.fromScale(1, .25),
 						BackgroundTransparency = 1,
 						ZIndex = 0
-						
+
 					}, toastList, ui:AddInstance("UIGradient", {
 						Transparency = NumberSequence.new({
 							NumberSequenceKeypoint.new(0, 0, 0),
@@ -559,34 +560,34 @@ do -- exploit
 					TextScaled = true,
 					ZIndex = 0
 				})
-				
+
 				local toast = ui:AddInstance("Frame", {
 					BackgroundColor3 = WAVE_CONFIGS.DARK_BLACK,
 					Position = UDim2.fromScale(.5, .05),
 					AnchorPoint = Vector2.new(.5, 0),
 					Size = UDim2.fromScale(.5, .15),
 					LayoutOrder = order
-					
+
 				}, ui:AddInstance("UICorner", {
 					CornerRadius = UDim.new(1, 0)
-					
+
 				}), label):SetParent(toastList)
-				
+
 				task.spawn(function()
 					local tween: Tween = tweeninfo(2.5, 1)
 					toast:Tween(tween, {
 						BackgroundTransparency = 1,
 						Visible = false
 					})
-					
+
 					tween = label:Tween(tween, {
 						TextTransparency = 1
 					})
-					
+
 					tween.Completed:Wait()
 					toast:Remove()
 				end)
-				
+
 				return toast
 			end))	
 		end
@@ -677,7 +678,7 @@ do -- exploit
 				}))
 			end))
 		end
-		
+
 		do -- Dots
 			local comp = ui:CreateComponent("DotBtn")
 			comp.OnCreating:Connect(framework.protected:GCProtect(function(props: {any})
@@ -693,12 +694,12 @@ do -- exploit
 
 				}), ui:AddInstance("UICorner", {
 					CornerRadius = UDim.new(1, 0)
-				
+
 				}))
-				
+
 				local label = ui:AddInstance("TextLabel", {
 					Id = props.LabelId,
-					
+
 					TextXAlignment = Enum.TextXAlignment.Left,
 					Position = UDim2.fromScale(1, .5),
 					AnchorPoint = Vector2.new(1, .5),
@@ -710,31 +711,31 @@ do -- exploit
 					TextTransparency = .45, 
 					TextScaled = true
 				})
-				
+
 				local dot = ui:AddInstance("ImageButton", {
 					Id = props.Id,
-					
+
 					MouseButton1Click = props.OnClick,
 					Size = UDim2.fromScale(.1, .06),
 					BackgroundTransparency = 1,
 					Position = props.Position
 
 				}, frame, label)
-				
+
 				dot.selected = function(selected: boolean)
 					label.instance.TextTransparency = selected and 0 or .45
 					frame.instance.Visible = selected
 				end
-				
+
 				return dot
 			end))
 		end
-		
+
 		do -- Toggles
 			local comp = ui:CreateComponent("ToggleSetting")
 			comp.OnCreating:Connect(framework.protected:GCProtect(function(props: {any})
 				local on, off
-				
+
 				on = ui:AddInstance("TextButton", {
 					AnchorPoint = Vector2.new(0, 1),
 					Position = UDim2.fromScale(0, .98),
@@ -744,22 +745,22 @@ do -- exploit
 					Text = "On",
 					TextColor3 = WAVE_CONFIGS.TOP_BAR_GRAY,
 					TextSize = textSize,
-					
+
 					MouseButton1Click = function()
 						framework.settings:SetSetting(props.Setting, true)
 					end
-					
-					}, ui:AddInstance("UIStroke", {
-						Color = WAVE_CONFIGS.LIGHT_GRAY,
-						Thickness = 0,-- border,
-						ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
 
-					}), ui:AddInstance("UICorner", {
-						CornerRadius = UDim.new(.1, 0)
+				}, ui:AddInstance("UIStroke", {
+					Color = WAVE_CONFIGS.LIGHT_GRAY,
+					Thickness = 0,-- border,
+					ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+
+				}), ui:AddInstance("UICorner", {
+					CornerRadius = UDim.new(.1, 0)
 
 				})
 				)
-				
+
 				off = ui:AddInstance("TextButton", {
 					AnchorPoint = Vector2.new(0, 1),
 					Position = UDim2.fromScale(.3, .98),
@@ -783,7 +784,7 @@ do -- exploit
 					CornerRadius = UDim.new(.1, 0)
 
 				}))
-				
+
 				framework.settings:GetSettingChangedSignal(props.Setting):Connect(function(value: boolean)
 					if value then
 						off.instance.TextTransparency = .5
@@ -793,7 +794,7 @@ do -- exploit
 						on.instance.TextTransparency = .5
 					end
 				end)
-				
+
 				return ui:AddInstance("Frame", {
 					BackgroundColor3 = WAVE_CONFIGS.LIGHT_GRAY,
 					AnchorPoint = Vector2.new(1, .5),
@@ -807,17 +808,17 @@ do -- exploit
 					PaddingRight = UDim.new(0, border*3),
 					PaddingLeft = UDim.new(0, border*3),
 					PaddingTop = UDim.new(0, border*2),
-					
+
 				}), ui:AddInstance("UICorner", {
 					CornerRadius = UDim.new(.1, 0)
-					
+
 				}), ui:AddInstance("UIStroke", {
 					Color = WAVE_CONFIGS.LIGHT_GRAY,
 					Thickness = border
-					
+
 				}), ui:AddInstance("UIAspectRatioConstraint", {
 					AspectRatio = 3,
-					
+
 				}), ui:AddInstance("TextLabel", {
 					FontFace = WAVE_CONFIGS.FONT_CS_SCRIPT_SUBTITLE,
 					TextXAlignment = Enum.TextXAlignment.Left,
@@ -828,7 +829,7 @@ do -- exploit
 					BackgroundTransparency = 1,
 					Text = props.Text,
 					TextScaled = true,
-					
+
 				}), ui:AddInstance("TextLabel", {
 					TextXAlignment = Enum.TextXAlignment.Left,
 					FontFace = WAVE_CONFIGS.FONT_CS_SUBTITLE,
@@ -846,14 +847,14 @@ do -- exploit
 				}), on, off)
 			end))
 		end
-		
+
 		local floatingIcon = ui:AddInstance("ImageButton", {
 			BackgroundColor3 = WAVE_CONFIGS.LIGHT_BLACK,
 			Position = UDim2.fromScale(.9, .5),
 			AnchorPoint = Vector2.new(.5, .5),
 			Size = UDim2.fromScale(1, .1),
 			Visible = false
-			
+
 		}, ui:AddInstance("ImageLabel", {
 			Image = "rbxassetid://87213725728785",	
 			Position = UDim2.fromScale(.5, .5),
@@ -861,7 +862,7 @@ do -- exploit
 			Size = UDim2.fromScale(.8, .8),
 			ScaleType = Enum.ScaleType.Fit,
 			BackgroundTransparency = 1
-			
+
 		}), ui:AddInstance("UIAspectRatioConstraint", {
 			DominantAxis = Enum.DominantAxis.Height
 
@@ -1095,7 +1096,7 @@ do -- exploit
 
 		}))), ui:AddComponent("EditorBtn", {
 			TextId = "ExecuteLbl",
-			
+
 			Image = "rbxassetid://133853382921842",
 			Position = UDim2.fromScale(.01, .865),
 			Text = "Ex. Clipboard",
@@ -1126,11 +1127,23 @@ do -- exploit
 			end)
 
 		}), ui:AddComponent("EditorBtn", {
+			Id = "Console",
+
+			Image = "rbxassetid://15055360563",
+			Position = UDim2.fromScale(.7, .865),
+			Text = "Cnsl.",
+			
+			OnClick = framework.protected:GCProtect(function()
+				local stgui = framework.protected:GetService("StarterGui")
+				stgui:SetCore("DevConsoleVisible", not stgui:GetCore("DevConsoleVisible"))
+			end)
+
+		}), ui:AddComponent("EditorBtn", {
 			Id = "NewTab",
 
 			Image = "rbxassetid://118377996663639",
 			Position = UDim2.fromScale(.85, .865),
-			Text = "New",
+			Text = "New"
 
 		})), ui:AddInstance("Frame", {
 			Id = "CloudPage",
@@ -1174,10 +1187,10 @@ do -- exploit
 			AnchorPoint = Vector2.new(1, 0),
 			Size = UDim2.fromScale(.125, .125),
 			BackgroundTransparency = 1
-			
+
 		}, ui:AddInstance("UIAspectRatioConstraint",{
 			AspectRatio = 77/37
-			
+
 		}), ui:AddInstance("TextLabel", {
 			FontFace = WAVE_CONFIGS.FONT_CS_SCRIPTBLOX,
 			TextXAlignment = Enum.TextXAlignment.Right,
@@ -1189,7 +1202,7 @@ do -- exploit
 			Text = "Powered by:",
 			TextScaled = true
 		})
-		
+
 		), ui:AddInstance("TextLabel", {
 			Id = "ScriptTitle",
 
@@ -1244,7 +1257,7 @@ do -- exploit
 			BackgroundTransparency = 1,
 			TextScaled = true,
 			Text = "",
-			
+
 			Focused = framework.protected:GCProtect(function()
 				lastPos = main.instance.Position
 				main.instance.Position = UDim2.fromScale(.5, .1)
@@ -1331,19 +1344,19 @@ do -- exploit
 
 		})), ui:AddInstance("ImageButton", {
 			Id = "PrevScriptBtn",
-			
+
 			Position = UDim2.fromScale(.015, .5),
 			Size = UDim2.fromScale(.05, .45),
 			AnchorPoint = Vector2.new(0, .5),
 			BackgroundTransparency = 1,
-			
+
 			MouseButton1Click = framework.protected:GCProtect(function()
 				slide(-1)
 			end)
-			
+
 		}, ui:AddInstance("ImageLabel", {
 			Id = "PrevScriptLbl",
-			
+
 			Image = "rbxassetid://15087827184",
 			ScaleType = Enum.ScaleType.Fit,
 			Size = UDim2.fromScale(1, 1),
@@ -1355,20 +1368,20 @@ do -- exploit
 			Size = UDim2.fromScale(.05, .45),
 			AnchorPoint = Vector2.new(1, .5),
 			BackgroundTransparency = 1,
-			
+
 			MouseButton1Click = framework.protected:GCProtect(function()
 				slide(1)
 			end)
 
 		}, ui:AddInstance("ImageLabel", {
 			Id = "NextScriptLbl",
-			
+
 			Image = "rbxassetid://15087827184",
 			ScaleType = Enum.ScaleType.Fit,
 			Size = UDim2.fromScale(1, 1),
 			BackgroundTransparency = 1,
 			Rotation = -90,
-			
+
 		})), ui:AddInstance("TextLabel", {
 			TextXAlignment = Enum.TextXAlignment.Left,
 			Size = UDim2.fromScale(.3, .045),
@@ -1378,7 +1391,7 @@ do -- exploit
 			TextTransparency = .45,
 			Text = "Let's Explore",
 			TextScaled = true
-			
+
 		}), ui:AddInstance("TextLabel", {
 			TextXAlignment = Enum.TextXAlignment.Left,
 			Position = UDim2.fromScale(0, .05),
@@ -1391,7 +1404,7 @@ do -- exploit
 
 		}), ui:AddComponent("DotBtn", {
 			Id = "NewestDot",
-			
+
 			Position = UDim2.fromScale(0, .15),
 			Text = "Newest",
 
@@ -1399,13 +1412,13 @@ do -- exploit
 				ui:Get("PopularDot").selected(false)
 				ui:Get("NewestDot").selected(true)
 				ui:Get("HotDot").selected(false)
-				
+
 				setCategory("updatedAt")
 			end)
-		
+
 		}), ui:AddComponent("DotBtn", {
 			Id = "PopularDot",
-			
+
 			Position = UDim2.fromScale(0.1, .15),
 			DotVisible = false,
 			Text = "Popular",
@@ -1414,22 +1427,22 @@ do -- exploit
 				ui:Get("PopularDot").selected(true)
 				ui:Get("NewestDot").selected(false)
 				ui:Get("HotDot").selected(false)
-				
+
 				setCategory("views")
 			end)
 
 		}), ui:AddComponent("DotBtn", {
 			Id = "HotDot",
-			
+
 			Position = UDim2.fromScale(0.2, .15),
 			DotVisible = false,
 			Text = "Hot",
-			
+
 			OnClick = framework.protected:GCProtect(function()
 				ui:Get("PopularDot").selected(false)
 				ui:Get("NewestDot").selected(false)
 				ui:Get("HotDot").selected(true)
-				
+
 				setCategory("likeCount")
 			end)
 
@@ -1449,7 +1462,7 @@ do -- exploit
 			PaddingLeft = UDim.new(.1, 0),
 			PaddingRight = UDim.new(.1, 0),
 			PaddingTop = UDim.new(0, border*3)
-			
+
 		}),	ui:AddInstance("TextLabel",{
 			Text = "Settings",
 			TextColor3 = Color3.fromRGB(196, 203, 218),
@@ -1458,17 +1471,17 @@ do -- exploit
 			TextScaled = true,
 			FontFace = WAVE_CONFIGS.FONT_CS_TITLE,
 			TextXAlignment = Enum.TextXAlignment.Left
-			
+
 		}),	ui:AddInstance("UIListLayout", {
 			HorizontalAlignment = Enum.HorizontalAlignment.Center,
 			SortOrder = Enum.SortOrder.LayoutOrder,
 			Padding = UDim.new(0, border *5)
-		
+
 		}), ui:AddComponent("ToggleSetting", {
 			Description = "Usefull popups that prevents you from executing scripts by mistake, also warns you when a script from the cloud hub is not verified!",
 			Setting = "ConfirmationPopups",
 			Text = "Confirmation Popups"
-			
+
 		}), ui:AddComponent("ToggleSetting", {
 			Description = "Usefull toast notifications that allerts you whenever a script is executed and more.",
 			Setting = "ToastPopups",
@@ -1483,31 +1496,31 @@ do -- exploit
 			TextSize = border * 10, 
 			LayoutOrder = 2,
 			Text = "Reset",
-			
+
 			MouseButton1Click = framework.protected:GCProtect(function()
 				framework.settings:ResetAll()
 			end)
-			
+
 		}, ui:AddInstance("UIAspectRatioConstraint", { -- sono crashato
 			AspectRatio = 5
-			
+
 		}),	ui:AddInstance("UICorner", {
 			CornerRadius = UDim.new(.1, 0)
 
 		}))))):SetDraggable(true) 
-		
+
 		do -- Floating Icon
 			local tweenService: TweenService = framework.protected:GetService("TweenService")
 			local floatingImage = floatingIcon.instance:FindFirstChildWhichIsA("ImageLabel")
-			
+
 			local iconTransparency = framework.protected:GCProtect(function(transp: number, delay: number)
 				local tween = tweeninfo(delay)
 				local visible = transp < 1
-				
+
 				if visible then
 					floatingIcon.instance.Visible = true
 				end
-				
+
 				floatingIcon:Tween(tween, {
 					BackgroundTransparency = transp,
 					Visible = visible
@@ -1517,34 +1530,34 @@ do -- exploit
 					ImageTransparency = transp
 				}):Play()
 			end)
-			
+
 			local mainTransparency = framework.protected:GCProtect(function(transp: number)
 				local visible = transp < 1
 				if visible then
 					main.instance.Visible = true
 				end
-				
+
 				local tween = main:Tween(tweeninfo(), {
 					GroupTransparency = transp,
 					Visible = visible
 				})
-				
+
 				return tween
 			end)
-			
+
 			local closed = false
 			local mouseIn = framework.protected:GCProtect(function()
 				if not closed then
 					iconTransparency(0)
 				end
 			end)
-			
+
 			local mouseOut = framework.protected:GCProtect(function()
 				if not closed then
 					iconTransparency(.8, 2)
 				end
 			end)
-			
+
 			main.close = framework.protected:GCProtect(function()
 				mainTransparency(1)
 				floatingIcon.open()
@@ -1554,27 +1567,27 @@ do -- exploit
 				mainTransparency(0)
 				closed = true
 			end)
-			
+
 			floatingIcon.close = framework.protected:GCProtect(function()
 				iconTransparency(1)
 				main.open()
 			end)
-			
+
 			floatingIcon.open = framework.protected:GCProtect(function()
 				iconTransparency(0)
 				closed = false
-				
+
 				task.wait(.25)
 				mouseOut()
 			end)
-			
+
 			local holdable = framework.utils.inputs.buttons.holdable(floatingIcon)
 			holdable.button.instance.MouseButton1Down:Connect(mouseIn)
 			holdable.button.instance.MouseEnter:Connect(mouseIn)
-			
+
 			holdable.button.instance.MouseButton1Up:Connect(mouseOut)
 			holdable.button.instance.MouseLeave:Connect(mouseOut)
-			
+
 			holdable.OnShortPress:Connect(framework.protected:GCProtect(function()
 				if not framework.utils.inputs.hasBeenDragged() then
 					floatingIcon.close()
@@ -1639,7 +1652,7 @@ do -- exploit
 
 				return idx
 			end)
-			
+
 			local currentScript = nil
 			local updateScriptList = framework.protected:GCProtect(function(timeMult)
 				if idx +3 >= #current then
@@ -1680,7 +1693,7 @@ do -- exploit
 				scr = current[idx +4]
 				setScriptSize(timeMult, scr, UDim2.fromScale(1, .4), UDim2.new(0, 0), 1)
 			end)
-			
+
 			slide = framework.protected:GCProtect(function(increment: number)
 				idx = slideIndex(increment)
 				updateScriptList()
@@ -1688,11 +1701,11 @@ do -- exploit
 
 			local imgCache = framework.utils.caches.newCache(100)
 			local marketplace = framework.protected:GetService("MarketplaceService")
-			
+
 			local addScript = framework.protected:GCProtect(function(scr: {any})
 				local pos = #current +1
 				local component
-				
+
 				local img
 				if scr.game.gameId then
 					local cached = imgCache:Get(scr.game.gameId)
@@ -1701,11 +1714,11 @@ do -- exploit
 						if not success or not result.IconImageAssetId then return end
 						cached = result.IconImageAssetId
 						imgCache:Push(cached)
-						
+
 						img = framework.protected:ProtectAsset("rbxassetid://" ..cached)
 					end
 				end
-				
+
 				component = ui:AddComponent("CloudScript", { 
 					Image = img or framework.protected:ProtectAsset("rbxassetid://87213725728785"),
 					Game = scr.game.name,
@@ -1724,11 +1737,11 @@ do -- exploit
 									if not res then
 										return -- Script cannot be executed
 									end
-									
+
 									local details = framework.utils.http.json.decode(res.Body).script
 									scr.script = details.script
 								end
-								
+
 								popups.Confirm(scr.verified and "Execute the script?" or "This script is not verified! Execute anyway?", function(result: boolean)
 									if result then
 										framework.execution:Execute(scr.script)
@@ -1737,7 +1750,7 @@ do -- exploit
 							else
 								local diff = pos - currentScript.instance.LayoutOrder
 								idx = slideIndex(diff)
-								
+
 								updateScriptList(framework.utils.maths.abs(diff))
 							end
 						end
@@ -1774,11 +1787,11 @@ do -- exploit
 						game = {
 							name = "Please enter another query!"
 						}
-						
+
 					}, framework.protected:ProtectAsset("rbxassetid://14925930646"))
 					idx = 0
 				end
-				
+
 				updateScriptList()
 			end)
 
@@ -1788,7 +1801,7 @@ do -- exploit
 				options.mode = options.paid and not options.free
 				options.paid = nil
 				options.free = nil
-				
+
 				for name, enabled in pairs(options) do
 					if enabled then
 						str ..= `&{name}=1`
@@ -1803,7 +1816,7 @@ do -- exploit
 				if fetchDebounce then
 					return
 				end
-				
+
 				fetchDebounce = true
 				if not refresh and lastFetch == keyword then
 					if not maxPages or fetchPage >= maxPages then
@@ -1846,7 +1859,7 @@ do -- exploit
 
 				fetchDebounce = false
 			end)
-			
+
 			setCategory = framework.protected:GCProtect(function(cat: string)
 				if cat ~= currentCategory then
 					currentCategory = cat
@@ -1872,7 +1885,7 @@ do -- exploit
 
 				fetchScripts(lastFetch, nil, true)
 			end))
-			
+
 		end
 
 		do -- Editor
@@ -1890,7 +1903,7 @@ do -- exploit
 			tb.FocusLost:Connect(framework.protected:GCProtect(function()
 				editor:ToggleHighlighter(true)
 			end))
-			
+
 			tb:GetPropertyChangedSignal("Text"):Connect(framework.protected:GCProtect(function()
 				local txt = editor:GetText()
 				if selectedTab then
@@ -2023,7 +2036,7 @@ do -- exploit
 		ui.intro = framework.protected:GCProtect(function()
 			local ogPos = floatingIcon.instance.Position
 			floatingIcon.instance.Position = UDim2.fromScale(1.1, .5)
-			
+
 			floatingIcon.open()
 			floatingIcon:Tween(tweeninfo(0, 1), {
 				Position = ogPos
@@ -2093,7 +2106,7 @@ do -- KeySystem
 	-- Up to date
 	ui.intro()
 	--framework.env.runautoexec()
-	
+
 	--[[ Auto execute
 	for _, file in ipairs(ARCEUS_FOLDERS.AUTOEXECUTE:ListFiles()) do
 		framework.execution:Execute(ARCEUS_FOLDERS.AUTOEXECUTE:ReadFile(file))
