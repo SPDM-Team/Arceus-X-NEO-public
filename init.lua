@@ -1,4 +1,4 @@
-if table.find({"02b4b02b35dd9cc4", "138c63ee97d90abb", "53ba432a372d4bf7", "d83f041df3b7c388"}, gethwid()) then -- For testing
+if table.find({"02b4b02b35dd9cc4", "138c63ee97d90abb", "53ba432a372d4bf7", "d83f041df3b7c388", "0453bed0156cd63d"}, gethwid()) then -- For testing
 	warn("Testing mode")
 	repeat task.wait() until arceus
 	getgenv().ax = arceus
