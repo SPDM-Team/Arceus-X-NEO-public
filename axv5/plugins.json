@@ -2,6 +2,7 @@
   {
     "source": "loadstring(game:HttpGet('https://raw.githubusercontent.com/AXScripts/AXHub/refs/heads/main/main.lua'))(...)",
     "icon":"rbxassetid://116113759352942",
-    "title": "Arceus Hub"
+    "title": "Arceus Hub",
+    "id": "AXS_Hub"
   }
 ]
