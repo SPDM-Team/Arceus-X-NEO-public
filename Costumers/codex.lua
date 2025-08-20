@@ -12,15 +12,17 @@ local whitelist = {
     "D92E826F-0C14-44C3-BB3C-82A499D97032"
 }
 
-if gethwid and table.find(whitelist, gethwid()) then
-	warn("[!] THIS IS A BETA TESTING VERSION OF CODEX")
-	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/c2f078a1205125a7b08fb61b59c78f51aa17419a/Codex-Beta.lua"))
-end
-
 local isfile = clonefunction(arceus and arceus.isarceusfile or isfile)
 protectfunction(isfile)
-
 local succ, oldUI = pcall(isfile, "data/OldUI")
+
+if gethwid and table.find(whitelist, gethwid()) then
+	warn("[!] THIS IS A BETA TESTING VERSION OF CODEX")
+	if not succ or not oldUI then -- New UI
+		return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/c2f078a1205125a7b08fb61b59c78f51aa17419a/Codex-Beta.lua"))
+	end
+end
+
 if not succ or not oldUI then -- New UI
 	return executecode(game:HttpGet("https://raw.githubusercontent.com/UltraStuff/scripts2/main/CodexUI"))
 end
