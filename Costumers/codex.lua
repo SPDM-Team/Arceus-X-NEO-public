@@ -14,7 +14,7 @@ local whitelist = {
 
 if gethwid and table.find(whitelist, gethwid()) then
 	warn("[!] THIS IS A BETA TESTING VERSION OF CODEX")
-	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/840e79ca98d4342d0dc1f95e7d34e999e7687bbb/Codex-Beta.lua"))
+	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/c2f078a1205125a7b08fb61b59c78f51aa17419a/Codex-Beta.lua"))
 end
 
 local isfile = clonefunction(arceus and arceus.isarceusfile or isfile)
