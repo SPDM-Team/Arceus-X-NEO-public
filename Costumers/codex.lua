@@ -17,4 +17,13 @@ if gethwid and table.find(whitelist, gethwid()) then
 	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/840e79ca98d4342d0dc1f95e7d34e999e7687bbb/Codex-Beta.lua"))
 end
 
+local isfile = clonefunction(arceus and arceus.isarceusfile or isfile)
+protectfunction(isfile)
+
+local succ, oldUI = pcall(isfile, "data/OldUI")
+if not succ or not oldUI then -- New UI
+	return executecode(game:HttpGet("https://raw.githubusercontent.com/UltraStuff/scripts2/main/CodexUI"))
+end
+
+-- Old UI
 executecode(game:HttpGet("https://raw.githubusercontent.com/UltraStuff/scripts2/main/CodexUI"))
