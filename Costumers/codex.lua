@@ -19,13 +19,13 @@ local succ, oldUI = pcall(isfile, "data/OldUI")
 if gethwid and table.find(whitelist, gethwid()) then
 	warn("[!] THIS IS A BETA TESTING VERSION OF CODEX")
 	if not succ or not oldUI then -- New UI
-		return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/a4c99bf35553e6399146b66b594cd86f5fdd99b8/Codex-Beta.lua"))
+		return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/5f6b14e0fcfc97f6da8a5512d780c429f4975933/Codex-Beta.lua"))
 	end
 end
 
 if not succ or not oldUI then -- New UI
 	--return executecode(game:HttpGet("https://raw.githubusercontent.com/UltraStuff/scripts2/main/CodexUI"))
-	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/a4c99bf35553e6399146b66b594cd86f5fdd99b8/Codex-Beta.lua"))
+	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/5f6b14e0fcfc97f6da8a5512d780c429f4975933/Codex-Beta.lua"))
 end
 
 -- Old UI
