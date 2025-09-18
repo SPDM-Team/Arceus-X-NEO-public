@@ -10,8 +10,6 @@ type RequestOptions = {
 	Cookies: { [string]: string }?
 }
 
-type fnct = (...any) -> ...any
-
 -- Services
 local HttpService = game:GetService("HttpService")
 
