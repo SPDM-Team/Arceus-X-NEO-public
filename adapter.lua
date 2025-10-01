@@ -88,6 +88,7 @@ do -- Arceus X Adapeter
 		ax.SDKEUIEWOWOASKS = arceus.SDKEUIEWOWOASKS or buddy
 		ax.UJSWOOALSKDSJEO = arceus.UJSWOOALSKDSJEO or buddy
 		ax.iscustomasset = arceus.iscustomasset or buddy
+		ax.WHWKIWIOSU = arceus.WHWKIWIOSU or buddy
 		ax.openurl = arceus.openurl or buddy
 		
 		for _, closure in pairs(ax) do
