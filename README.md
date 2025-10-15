@@ -30,5 +30,5 @@ Safety is paramount. Arceus X NEO is frequently updated to ensure it remains und
 ## 🌐 Community
 
 Join our community for updates, script sharing, and more:
-- [Discord](https://discord.g//arceus)
-- [Website](https://spdmteam.com/arceusx)
+- [Discord](https://discord.spdmteam.com/)
+- [Website](https://spdmteam.com/)
