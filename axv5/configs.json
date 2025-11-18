@@ -1,6 +1,6 @@
 {
   "authfile": false,
-  "keyless": false,
+  "keyless": true,
   "version": {
     "android_vng": "1.9.0",
     "android": "1.9.3",
