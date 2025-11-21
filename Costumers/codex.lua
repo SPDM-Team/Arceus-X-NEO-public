@@ -2,14 +2,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SPDM-Team/Arceus-X-NE
 
 -- Beta testing
 local whitelist = {
-    "0cf0fb04cb7e5571", "30baba33dcefc57c", -- Android
-    "94709c29191e6396", "41d9fd434a3716e7",
-    "af15143601cdd261", "fd4e1f5c3b175b1d",
-    "02b4b02b35dd9cc4", "4cd6f60cb195d6d9",
-	
-    "397A62E6-297F-4706-88AA-7C00CA31FB6B", -- iOS
-    "2574FBB5-C46B-4CC6-AF83-86185A05F63D",
-    "D92E826F-0C14-44C3-BB3C-82A499D97032"
+    "f7102dcfb20dae30",
+    "9b9e2c926606eeb9",
+    "73c1100e8694ce04"
 }
 
 local isfile = clonefunction(arceus and arceus.isarceusfile or isfile)
@@ -19,7 +14,7 @@ local succ, oldUI = pcall(isfile, "data/OldUI")
 if gethwid and table.find(whitelist, gethwid()) then
 	warn("[!] THIS IS A BETA TESTING VERSION OF CODEX")
 	if not succ or not oldUI then -- New UI
-		return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/d7ae8e095dc318b28523bf0f73335e53/raw/78908f0d05de45d81e5dac32380e1b9a8dbdecda/Codex"))
+		return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/24098f62ce8ace77a5be95f46d41a8c2/raw/e48b7f1350bb748bb313e4e4432236c34e6685e6/Codex-Beta-2"))
 	end
 end
 
