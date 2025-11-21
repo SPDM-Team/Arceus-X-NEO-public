@@ -1,11 +1,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SPDM-Team/Arceus-X-NEO-public/refs/heads/main/init.lua"))()
 
 -- Beta testing
-local whitelist = {
-    "f7102dcfb20dae30",
-    "9b9e2c926606eeb9",
-    "73c1100e8694ce04"
-}
+local whitelist = {"f7102dcfb20dae30","9b9e2c926606eeb9","73c1100e8694ce04"}
 
 local isfile = clonefunction(arceus and arceus.isarceusfile or isfile)
 protectfunction(isfile)
