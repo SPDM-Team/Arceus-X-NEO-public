@@ -10,7 +10,7 @@ local succ, oldUI = pcall(isfile, "data/OldUI")
 if gethwid and table.find(whitelist, gethwid()) then
 	warn("[!] THIS IS A BETA TESTING VERSION OF CODEX")
 	if not succ or not oldUI then -- New UI
-		return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/24098f62ce8ace77a5be95f46d41a8c2/raw/677ad2291ea0c77f318ab38ef59c56a6d2b62604/Codex-Beta-2"))
+		return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/24098f62ce8ace77a5be95f46d41a8c2/raw/419c5453702450bc8832ccb9dee44ead6afb9f1f/Codex-Beta-2"))
 	end
 end
 
