@@ -4,6 +4,7 @@
     "features":"Descriptiopn",
     "script":"print('hello')",
     "title":"Testing Hub",
-    "game":"Universal"
+    "game":"Universal",
+    "placeId": false
   }
 ]
