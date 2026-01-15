@@ -2,7 +2,7 @@
   "authfile": false,
   "keyless": false,
   "version": {
-    "android_vng": "1.9.7",
+    "android_vng": "1.9.8",
     "android": "1.9.8",
     "ios": "1.0.0"
   }
