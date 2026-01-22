@@ -83,6 +83,7 @@ do -- Arceus X Adapeter
 		ax.ispermissiongranted = arceus.ispermissiongranted or buddy
 		ax.retrievecustomasset = arceus.retrievecustomasset or buddy
 		ax.deletecustomasset = arceus.deletecustomasset or buddy
+		ax.EOWOWQPQPPALSKSNX = arceus.EOWOWQPQPPALSKSNX or buddy
 		ax.writecustomasset = arceus.writecustomasset or buddy
 		ax.WOWPALAKSZMNXBRU = arceus.WOWPALAKSZMNXBRU or buddy
 		ax.SDKEUIEWOWOASKS = arceus.SDKEUIEWOWOASKS or buddy
