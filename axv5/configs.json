@@ -3,7 +3,7 @@
   "keyless": false,
   "version": {
     "android_vng": "2.0.3",
-    "android": "2.0.5",
+    "android": "2.0.6",
     "ios": "1.0.0"
   }
 }
