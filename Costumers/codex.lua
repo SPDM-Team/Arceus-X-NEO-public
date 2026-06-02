@@ -16,8 +16,8 @@ end
 
 if not succ or not oldUI then -- New UI
 	--return executecode(game:HttpGet("https://raw.githubusercontent.com/UltraStuff/scripts2/main/CodexUI"))
-	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/24098f62ce8ace77a5be95f46d41a8c2/raw/a7c6e2e27600760859401d7bfa29bc3a5cf249e3/Codex-Beta-2"))
-	--return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/1d3625ee40e98e70311370e8d6642172/raw/4a84e341778a006859ab6a2203ff32ea57c90a51/Codex-Beta.lua"))
+	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/2f0cee3c4dfa5021022b041585476696/raw/ed1a5dd9a8d29b871cfebc5b95a012165fd02464/Codex-Keysystem-2"))
+	--return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/24098f62ce8ace77a5be95f46d41a8c2/raw/a7c6e2e27600760859401d7bfa29bc3a5cf249e3/Codex-Beta-2"))
 end
 
 -- Old UI
