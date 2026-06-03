@@ -10,13 +10,13 @@ local succ, oldUI = pcall(isfile, "data/OldUI")
 if gethwid and table.find(whitelist, gethwid()) then
 	warn("[!] THIS IS A BETA TESTING VERSION OF CODEX")
 	if not succ or not oldUI then -- New UI
-		return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/2f0cee3c4dfa5021022b041585476696/raw/ed1a5dd9a8d29b871cfebc5b95a012165fd02464/Codex-Keysystem-2"))
+		return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/2f0cee3c4dfa5021022b041585476696/raw/54e349af2f1d737c7589a262419d7011ded0de4b/Codex-Keysystem-2"))
 	end
 end
 
 --if not succ or not oldUI then -- New UI
 	--return executecode(game:HttpGet("https://raw.githubusercontent.com/UltraStuff/scripts2/main/CodexUI"))
-	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/2f0cee3c4dfa5021022b041585476696/raw/ed1a5dd9a8d29b871cfebc5b95a012165fd02464/Codex-Keysystem-2"))
+	return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/2f0cee3c4dfa5021022b041585476696/raw/54e349af2f1d737c7589a262419d7011ded0de4b/Codex-Keysystem-2"))
 	--return executecode(game:HttpGet("https://gist.githubusercontent.com/Riky47/24098f62ce8ace77a5be95f46d41a8c2/raw/a7c6e2e27600760859401d7bfa29bc3a5cf249e3/Codex-Beta-2"))
 --end
 
