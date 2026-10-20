@@ -1,6 +1,6 @@
 [
   {
-    "source": "loadstring(game:HttpGet('https://raw.githubusercontent.com/AXScripts/AXHub/refs/heads/main/main.lua'))(...)",
+    "source": "loadstring(game:HttpGet('https://raw.githubusercontent.com/SPDM-Team/Arceus-X-NEO-public/refs/heads/main/axv5/ArceusHub.lua'))(...)",
     "icon":"rbxassetid://116113759352942",
     "title": "Arceus Hub",
     "id": "AXS_Hub"
