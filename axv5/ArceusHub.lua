@@ -247,6 +247,26 @@ local module = {
 			return part.Position + part.AssemblyLinearVelocity * (flags_aim.predictionstrenght /10) *(math.abs((workspace.CurrentCamera.CFrame.p -part.Position).Magnitude / 100)) -- / bulletSpeed
 		end
 
+		-- ESP drawings: erano usati ma mai creati (BoxOutline/Line/Box/...) -> "attempt to index nil with 'Visible'" appena si attiva l'aimbot
+		local function mkSquare(color)
+			if not Drawing then return { Visible = false } end
+			local d = Drawing.new("Square")
+			d.Thickness, d.Filled, d.Color, d.Visible = 2, false, color, false
+			return d
+		end
+		local function mkLine(color)
+			if not Drawing then return { Visible = false } end
+			local d = Drawing.new("Line")
+			d.Thickness, d.Color, d.Visible = 1, color, false
+			return d
+		end
+		local BoxOutline  = mkSquare(Color3.fromRGB(255, 255, 255))
+		local BoxOutline2 = mkSquare(Color3.fromRGB(255, 255, 255))
+		local Box         = mkSquare(Color3.fromRGB(255, 0, 0))
+		local Box2        = mkSquare(Color3.fromRGB(255, 170, 0))
+		local Line        = mkLine(Color3.fromRGB(255, 255, 255))
+		local Line2       = mkLine(Color3.fromRGB(255, 170, 0))
+
 		local function setESP(target, isRelevant)
 			local outline = isRelevant and BoxOutline or BoxOutline2
 			local line = isRelevant and Line or Line2
