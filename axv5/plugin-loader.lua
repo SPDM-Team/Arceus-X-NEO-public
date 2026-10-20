@@ -23,8 +23,10 @@ end)
 ]]
 
 -- Loader, In AX v5 UI or External UI
+
+--local framework = ... or loadstring(game:HttpGet("https://raw.githubusercontent.com/Riky47/Xploit-Framework/refs/heads/main/index.lua"))()
 local imporetedFramework = ... and true or false
-local framework = require(script.Parent.Parent:WaitForChild("Wave"):WaitForChild("WaveFramework"))
+local framework = (...) or require(script.Parent.Parent:WaitForChild("Wave"):WaitForChild("WaveFramework"))
 local loader = {}
 
 if not LPH_OBFUSCATED then -- Luraph integration
