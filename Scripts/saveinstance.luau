@@ -2232,7 +2232,7 @@ local GLOBAL_ENV = getgenv and getgenv() or _G or shared
 
 local function synsaveinstance(CustomOptions, CustomOptions2)
 	if GLOBAL_ENV.USSI then
-		return
+		error("saveinstance is already initializing another save", 2)
 	end
 	GLOBAL_ENV.USSI = true
 	do
@@ -2244,8 +2244,8 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 
 	local currentstr, currentsize, totalsize, chunks = "", 0, 0, table.create(1)
 	local savebuffer, savebuffer_size = {}, 1
-	local header =
-		'<!-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw --><roblox version="4">'
+	-- Keep <roblox at byte zero; the attribution remains at the end of the XML.
+	local header = '<roblox version="4">'
 
 	local StatusText
 
@@ -2505,7 +2505,7 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 		warn(text)
 
 		GLOBAL_ENV.USSI = nil
-		return
+		error(text, 2)
 	end
 
 	if OPTIONS.IgnoreDefaultPlayerScripts then
@@ -2676,9 +2676,9 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 			placename = placename .. filetype
 		end
 
-		if GLOBAL_ENV[placename] then -- ? AvoidFileOverwrite kinda messes with this, but shouldn't be an issue
-			-- warn("UniversalSynSaveInstance is already saving to this file")
-			return
+		if GLOBAL_ENV[placename] then
+			GLOBAL_ENV.USSI = nil
+			error("saveinstance is already saving to " .. placename, 2)
 		end
 
 		GLOBAL_ENV[placename] = true
@@ -4175,9 +4175,8 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 					end
 
 					if not base64encode then
-						warn("base64encode not found")
 						Cleanup()
-						return
+						error("saveinstance: base64encode not found", 2)
 					end
 				end
 			end
@@ -4186,10 +4185,8 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 				if ok then
 					ClassList = result
 				else
-					warn("Failed to load the API Dump")
-					warn(result)
 					Cleanup()
-					return
+					error("saveinstance: failed to load the API Dump: " .. tostring(result), 2)
 				end
 			end
 		end
@@ -4243,11 +4240,25 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 			end)
 		end
 
+		-- Do not report a partial/failed save as a successful filename.
+		if not ok then
+			error(err, 2)
+		end
+		if not OPTIONS.Callback and isfile and not isfile(placename) then
+			error("saveinstance: the output file was not created: " .. placename, 2)
+		end
+
 		if OPTIONS.ShutdownWhenDone and ok then
 			task.wait(Log10 * 2 + ExtraTime)
 			game:Shutdown()
+		end
+
+		-- Explicit Callback mode owns its output and may intentionally create no file.
+		if not OPTIONS.Callback then
+			return placename
 		end
 	end
 end
 
 return synsaveinstance
+
