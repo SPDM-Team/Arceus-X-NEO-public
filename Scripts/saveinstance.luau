@@ -26,32 +26,16 @@ local function ArrayToDict(t, hydridMode, valueOverride, typeStrict)
 	return tmp
 end
 
-local global_container
-do
-	local filename = "UniversalMethodFinder"
-
-	local finder
-	finder, global_container = loadstring(
-		game:HttpGet("https://raw.githubusercontent.com/luau/SomeHub/main/" .. filename .. ".luau", true),
-		filename
-	)()
-
-	finder({
-		-- readbinarystring = 'string.find(...,"bin",nil,true)', -- ! Could match some unwanted stuff (getbinaryindex)
-		-- request = 'string.find(...,"request",nil,true) and not string.find(...,"internal",nil,true)',
-		base64encode = 'local a={...}local b=a[1]local function c(a,b)return string.find(a,b,nil,true)end;return c(b,"encode")and(c(b,"base64")or c(string.lower(tostring(a[2])),"base64"))',
-		-- cloneref = 'string.find(...,"clone",nil,true) and string.find(...,"ref",nil,true)',
-		-- decompile = '(string.find(...,"decomp",nil,true) and string.sub(...,#...) ~= "s")',
-		gethiddenproperty = 'string.find(...,"get",nil,true) and string.find(...,"h",nil,true) and string.find(...,"prop",nil,true) and string.sub(...,#...) ~= "s"',
-		gethui = 'string.find(...,"get",nil,true) and string.find(...,"h",nil,true) and string.find(...,"ui",nil,true)',
-		-- getcon = 'string.find(...,"get",nil,true) and (string.find(...,"conn",nil,true) or string.find(...,"sig",nil,true)) and string.sub(...,#(...))=="s"',
-		getnilinstances = 'string.find(...,"nil",nil,true) and string.find(...,"get",nil,true) and string.sub(...,#...) == "s"', -- ! Could match some unwanted stuff
-		getscriptbytecode = 'string.find(...,"get",nil,true) and string.find(...,"script",nil,true) and string.find(...,"bytecode",nil,true)', --  or string.find(...,"dump",nil,true) and string.find(...,"string",nil,true) due to Fluxus (dumpstring returns a function)
-		-- hash = 'local a={...}local b=a[1]local function c(a,b)return string.find(a,b,nil,true)end;return c(b,"hash")and c(string.lower(tostring(a[2])),"crypt")',
-		protectgui = 'string.find(...,"protect",nil,true) and string.find(...,"ui",nil,true) and not string.find(...,"un",nil,true)',
-		setthreadidentity = 'string.find(...,"identity",nil,true) and string.find(...,"set",nil,true)',
-	}, true, 10)
-end
+-- Arceus exposes these APIs directly; do not fetch an external method finder.
+local global_container = {
+    base64encode = base64encode or base64_encode,
+    gethiddenproperty = gethiddenproperty,
+    gethui = gethui,
+    getnilinstances = getnilinstances,
+    getscriptbytecode = getscriptbytecode,
+    protectgui = protectgui,
+    setthreadidentity = setthreadidentity,
+}
 
 local identify_executor = identifyexecutor or getexecutorname or whatexecutor
 
@@ -4097,22 +4081,6 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 						end
 					end
 				end
-				local function benchmark(funcs, ...)
-					local ranking = table.create(2)
-					for i, f in funcs do
-						local start = os.clock()
-						for _ = 1, 50 do
-							f(...)
-						end
-						ranking[i] = { t = os.clock() - start, f = f }
-					end
-					table.sort(ranking, function(a, b)
-						return a.t < b.t
-					end)
-					return ranking[1].f
-				end
-
-				local test_str = string.rep("\1\0\0\0\1\2\3\4\5\6\7", 50)
 
 				do
 					if
@@ -4142,37 +4110,22 @@ local function synsaveinstance(CustomOptions, CustomOptions2)
 						GLOBAL_ENV.bit32 = b32
 					end
 
-					-- Credits @daily3014 & @XoifaiI
-					local rbxcrypt_base64encode
-					pcall(function()
-						local b64_enc_buf = loadstring(
-							game:HttpGet(
-								"https://raw.githubusercontent.com/daily3014/rbx-cryptography/refs/heads/main/src/Utilities/Base64.luau",
-								true
-							),
-							"Base64"
-						)().Encode
-						rbxcrypt_base64encode = function(raw)
-							return buffer.tostring(b64_enc_buf(buffer.fromstring(raw)))
-						end
-					end)
-
-					local EncodingService = game:GetService("EncodingService")
-					local EncodingService_base64encode = function(raw)
-						return buffer.tostring(EncodingService:Base64Encode(buffer.fromstring(raw)))
-					end
-
-					-- * Tests if base64encode exists and works properly then benchmark it
-					if base64encode and base64encode("\1\0\0\0\1") == "AQAAAAE=" then
-						if rbxcrypt_base64encode then
-							base64encode = benchmark(
-								{ base64encode, rbxcrypt_base64encode, EncodingService_base64encode },
-								test_str
-							)
-						end
-					else
-						base64encode = rbxcrypt_base64encode
-					end
+                    -- Prefer the native encoder; fall back to Roblox's encoder if unavailable.
+                    local encoder_ok, encoded = false, nil
+                    if type(base64encode) == "function" then
+                        encoder_ok, encoded = pcall(base64encode, "\1\0\0\0\1")
+                    end
+                    if not encoder_ok or encoded ~= "AQAAAAE=" then
+                        local fallback_ok, fallback = pcall(function()
+                            local encoding_service = game:GetService("EncodingService")
+                            local function encode(raw)
+                                return buffer.tostring(encoding_service:Base64Encode(buffer.fromstring(raw)))
+                            end
+                            assert(encode("\1\0\0\0\1") == "AQAAAAE=", "invalid base64 encoder")
+                            return encode
+                        end)
+                        base64encode = fallback_ok and fallback or nil
+                    end
 
 					if not base64encode then
 						Cleanup()
